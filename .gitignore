@@ -1,3 +1,28 @@
+
+# Created by https://www.gitignore.io/api/c++,altium
+# Edit at https://www.gitignore.io/?templates=c++,altium
+
+### Altium ###
+# Previews Folders
+**/__Previews/
+
+# History Folders
+**/History/*
+
+# Project Logs
+Project\ Logs*/
+
+# Project Outputs
+Project\ Outputs*/
+
+# Auto-conversion notices
+*.PcbDoc.htm
+
+# Access lock file for dbLib sources
+**/*.ldb
+
+
+### C++ ###
 # Prerequisites
 *.d
 
@@ -31,27 +56,4 @@
 *.out
 *.app
 
-# Created by https://www.gitignore.io/api/altium
-# Edit at https://www.gitignore.io/?templates=altium
-
-### Altium ###
-# Previews Folders
-**/__Previews/
-
-# History Folders
-**/History/*
-
-# Project Logs
-Project\ Logs*/
-
-# Project Outputs
-Project\ Outputs*/
-
-# Auto-conversion notices
-*.PcbDoc.htm
-
-# Access lock file for dbLib sources
-**/*.ldb
-
-
-# End of https://www.gitignore.io/api/altium
+# End of https://www.gitignore.io/api/c++,altium

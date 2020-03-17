@@ -1,0 +1,5 @@
+Record=TopLevelDocument|FileName=Master.SchDoc
+Record=SheetSymbol|Record=SheetSymbol|SourceDocument=Master.SchDoc|Designator=LEDArray_A|SchDesignator=LEDArray_A|FileName=LEDArray.SchDoc|SymbolType=Normal|RawFileName=LEDArray.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|Record=SheetSymbol|SourceDocument=Master.SchDoc|Designator=LEDArray_B|SchDesignator=LEDArray_B|FileName=LEDArray.SchDoc|SymbolType=Normal|RawFileName=LEDArray.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|Record=SheetSymbol|SourceDocument=Master.SchDoc|Designator=LEDArray_C|SchDesignator=LEDArray_C|FileName=LEDArray.SchDoc|SymbolType=Normal|RawFileName=LEDArray.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|Record=SheetSymbol|SourceDocument=Master.SchDoc|Designator=LEDArray_D|SchDesignator=LEDArray_D|FileName=LEDArray.SchDoc|SymbolType=Normal|RawFileName=LEDArray.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
