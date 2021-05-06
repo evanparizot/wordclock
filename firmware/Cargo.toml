@@ -1,0 +1,27 @@
+[package]
+name = "firmware"
+version = "0.1.0"
+authors = ["Evan <eparizot@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+panic-halt = "0.2.0"
+max7219 = "0.3.0"
+
+[dependencies.arduino-uno]
+git = "https://github.com/rahix/avr-hal"
+rev = "885e8ec"
+
+[profile.dev]
+panic = "abort"
+lto = true
+opt-level = "s"
+
+[profile.release]
+panic = "abort"
+codegen-units = 1
+debug = true
+lto = true
+opt-level = "s"
