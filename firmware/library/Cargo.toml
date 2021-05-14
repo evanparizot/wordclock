@@ -1,0 +1,14 @@
+[package]
+authors = ["Evan <eparizot@gmail.com>"]
+name = "lib"
+edition = "2018"
+version = "0.1.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+cortex-m = "0.6.4"
+cortex-m-rt = "0.6.13"
+stm32f3-discovery = "0.6.0"
+panic-halt = "0.2.0"
+panic-itm = "0.4.2"

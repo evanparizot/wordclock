@@ -1,14 +1,29 @@
-#![no_std]
+#![deny(unsafe_code)]
 #![no_main]
+#![no_std]
 
-// Pull in the panic handler from panic-halt
-extern crate panic_halt;
+use lib::{entry, Delay, DelayMs, LedArray, OutputSwitch};
+use volatile::Volatile;
 
-use arduino_uno::prelude::*;
-
-#[arduino_uno::entry]
+#[entry]
 fn main() -> ! {
-    let dp = arduino_uno::Peripherals::take().unwrap();
+    let (mut delay, mut leds): (Delay, LedArray) = lib::init();
 
-    unimplemented!()
+    let mut half_period = 500_u16;
+    let v_half_period = Volatile::new(&mut half_period);
+
+    loop {
+        leds[0].on().ok();
+        delay.delay_ms(v_half_period.read());
+
+        leds[0].off().ok();
+        delay.delay_ms(v_half_period.read());
+    }
+    //
+    // let _y;
+    // let x = 42;
+    // _y = x;
+    //
+    // // infinite loop; just so we don't leave this stack frame
+    // loop {}
 }
