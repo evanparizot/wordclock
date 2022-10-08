@@ -59,4 +59,22 @@ cargo run
 
 # Reset microcontroller
 (gdb) monitor reset halt
+
+# Set variable
+(gdb) set variable = 100
+
+```
+
+## sout
+Can print things back to the debugging computer through the use of `iprintln!()`
+
+```
+itmdump -F -f itm.txt
+```
+
+## Release
+```
+cargo build --target thumbv7em-none-eabihf --release
+
+cargo size --target thumbv7em-none-eabihf --bin led-roulette -- -A
 ```
