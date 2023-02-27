@@ -8,7 +8,7 @@ cargo build
 
 ## Start OpenOCD
 ```
-openocd -s C:\OpenOCD\share\scripts -f interfacee/stlink-v2-1.cfg -f target/stm32f3x.cfg
+openocd -s C:\OpenOCD\share\scripts -f interface/stlink-v2-1.cfg -f target/stm32f3x.cfg
 ```
 
 ## Flashing Chip

@@ -180,3 +180,5 @@ Cargo.lock
 .idea/**/*
 *.zip
 fp-info-cache
+
+itm.txt
