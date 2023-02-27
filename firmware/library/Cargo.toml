@@ -13,6 +13,7 @@ switch-hal = "0.4.0"
 panic-halt = "0.2.0"
 panic-itm = "0.4.2"
 max7219 = "0.3.1"
+ds323x = "0.5.0"
 
 
 [dependencies.stm32f3xx-hal]
