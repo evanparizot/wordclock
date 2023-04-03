@@ -1,6 +1,12 @@
 # Overview
 
 
+## Install Rust build target
+
+```
+rustup target add thumbv7em-none-eabihf
+```
+
 ## Compiling
 ```
 cargo build

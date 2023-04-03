@@ -1,6 +1,6 @@
 [target.thumbv7em-none-eabihf]
-runner = "arm-none-eabi-gdb -q -x openocd.gdb"
-# runner = "gdb-multiarch -q"
+# runner = "arm-none-eabi-gdb -q -x openocd.gdb"
+runner = "gdb-multiarch -q -x openocd.gdb"
 # runner = "gdb -q"
 rustflags = [
   "-C", "link-arg=-Tlink.x",

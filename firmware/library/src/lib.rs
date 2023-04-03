@@ -1,8 +1,9 @@
 #![no_std]
 
-use cortex_m::asm;
-use ds323x::{ic::DS3231, interface::I2cInterface, Ds323x, NaiveDate, DateTimeAccess, NaiveDateTime};
-use max7219::{connectors::SpiConnector, MAX7219};
+use ds323x::Ds323x;
+use max7219::{
+    MAX7219,
+};
 pub use panic_itm; // panic handler
 
 pub use cortex_m::{asm::bkpt, iprint, iprintln, peripheral::ITM};
@@ -17,62 +18,14 @@ pub use stm32f3xx_hal::{
     spi::Spi,
 };
 use stm32f3xx_hal::{
-    gpio::{Alternate, Gpiob, OpenDrain, Pin, U},
     i2c::I2c,
-    pac::{I2C1, SPI2},
 };
 
-pub struct Clock {
-    display: MAX7219<
-        SpiConnector<
-            Spi<
-                SPI2,
-                (
-                    Pin<Gpiob, U<13>, Alternate<PushPull, 5>>,
-                    Pin<Gpiob, U<14>, Alternate<PushPull, 5>>,
-                    Pin<Gpiob, U<15>, Alternate<PushPull, 5>>,
-                ),
-            >,
-        >,
-    >,
-    rtc: Ds323x<
-        I2cInterface<
-            I2c<
-                I2C1,
-                (
-                    Pin<Gpiob, U<6>, Alternate<OpenDrain, 4>>,
-                    Pin<Gpiob, U<7>, Alternate<OpenDrain, 4>>,
-                ),
-            >,
-        >,
-        DS3231,
-    >,
-    delay: Delay,
-}
+pub mod clock;
+use clock::*;
 
-impl Clock {
-    pub fn write(&mut self) {
-        // self.display.write_str(0, b"12345678", 0b0010_0000).unwrap();
-    }
 
-    pub fn on(&mut self) {
-        self.display.test(0, true).unwrap();
-    }
-
-    pub fn off(&mut self) {
-        self.display.test(0, false).unwrap();
-    }
-
-    pub fn pause(&mut self, ms: u16) {
-        self.delay.delay_ms(ms);
-    }
-
-    pub fn now(&mut self) -> NaiveDateTime {
-        self.rtc.datetime().unwrap()
-    }
-}
-
-pub fn init() -> Clock {
+pub fn init() -> (Clock, ITM) {
     let cp = cortex_m::Peripherals::take().unwrap();
     let dp = pac::Peripherals::take().unwrap();
 
@@ -116,7 +69,7 @@ pub fn init() -> Clock {
     sda.internal_pull_up(&mut gpiob.pupdr, true);
 
     let i2c = I2c::new(dp.I2C1, (scl, sda), 100_000.Hz(), clocks, &mut rcc.apb1);
-    let mut rtc = Ds323x::new_ds3231(i2c);
+    let rtc = Ds323x::new_ds3231(i2c);
 
     //   /$$$$$$  /$$$$$$$  /$$$$$$
     //  /$$__  $$| $$__  $$|_  $$_/
@@ -146,14 +99,17 @@ pub fn init() -> Clock {
 
     let spi = Spi::new(dp.SPI2, (sck, miso, mosi), 3.MHz(), clocks, &mut rcc.apb1);
 
-    let mut display = MAX7219::from_spi(1, spi).unwrap();
+    let displays = 3;
+    let mut display = MAX7219::from_spi_cs(displays, spi, cs).unwrap();
 
     display.power_on().unwrap();
-    display.clear_display(0).unwrap();
-
-    Clock {
-        display: display,
-        rtc: rtc,
-        delay: delay,
+    for a in 0..displays {
+        display.clear_display(a).unwrap();
     }
+
+    (Clock {
+        display,
+        rtc,
+        delay,
+    }, cp.ITM)
 }
