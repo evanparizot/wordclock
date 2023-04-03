@@ -24,6 +24,9 @@ use stm32f3xx_hal::{
 pub mod clock;
 use clock::*;
 
+pub mod times;
+use times::*;
+
 
 pub fn init() -> (Clock, ITM) {
     let cp = cortex_m::Peripherals::take().unwrap();
