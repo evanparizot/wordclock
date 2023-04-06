@@ -25,7 +25,6 @@ pub mod clock;
 use clock::*;
 
 pub mod times;
-use times::*;
 
 
 pub fn init() -> (Clock, ITM) {

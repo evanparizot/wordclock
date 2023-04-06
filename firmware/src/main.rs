@@ -12,7 +12,7 @@ fn main() -> ! {
 
     // iprintln!(&mut itm.stim[0], "Hello there");
 
-
+    let (hour, minute, seconds) = clock.time();
 
     loop {
         // Step 1 - Check inputs

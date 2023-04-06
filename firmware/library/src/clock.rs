@@ -1,5 +1,5 @@
 use cortex_m::prelude::_embedded_hal_blocking_delay_DelayMs;
-use ds323x::{ic::DS3231, interface::I2cInterface, Ds323x, NaiveDateTime, DateTimeAccess};
+use ds323x::{ic::DS3231, interface::I2cInterface, Ds323x, NaiveDateTime, DateTimeAccess, Timelike, NaiveTime};
 use max7219::{connectors::SpiConnectorSW, MAX7219};
 use stm32f3xx_hal::{
     gpio::{Alternate, Gpiob, OpenDrain, Output, Pin, PushPull, U},
@@ -67,7 +67,13 @@ impl Clock {
         self.display.set_intensity(addr, intensity).unwrap();
     }
 
-    pub fn now(&mut self) -> NaiveDateTime {
-        self.rtc.datetime().unwrap()
+    pub fn time(&mut self) -> (u32, u32, u32) {
+        let datetime = self.rtc.datetime().unwrap();
+        let hour = datetime.time().hour();
+        let minute = datetime.time().minute();
+        let seconds = datetime.time().second();
+
+        (hour, minute, seconds)
     }
+
 }
