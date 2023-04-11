@@ -1,9 +1,7 @@
 #![no_std]
 
 use ds323x::Ds323x;
-use max7219::{
-    MAX7219,
-};
+use max7219::MAX7219;
 pub use panic_itm; // panic handler
 
 pub use cortex_m::{asm::bkpt, iprint, iprintln, peripheral::ITM};
@@ -23,6 +21,9 @@ use stm32f3xx_hal::{
 
 pub mod clock;
 use clock::*;
+use times::Mode;
+
+pub mod times;
 
 
 pub fn init() -> (Clock, ITM) {
@@ -40,8 +41,6 @@ pub fn init() -> (Clock, ITM) {
         .pclk1(32.MHz())
         .pclk2(32.MHz())
         .freeze(&mut flash.acr);
-
-    let delay = Delay::new(cp.SYST, clocks);
 
     //  /$$$$$$  /$$$$$$   /$$$$$$
     // |_  $$_/ /$$__  $$ /$$__  $$
@@ -105,11 +104,12 @@ pub fn init() -> (Clock, ITM) {
     display.power_on().unwrap();
     for a in 0..displays {
         display.clear_display(a).unwrap();
+        display.set_intensity(a, 4).unwrap();
     }
 
     (Clock {
         display,
         rtc,
-        delay,
+        mode: Mode::FiveMinute
     }, cp.ITM)
 }
