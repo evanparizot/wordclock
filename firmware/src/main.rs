@@ -2,20 +2,22 @@
 #![no_main]
 #![no_std]
 
-use lib::{entry, iprintln};
+use lib::{entry};
+use state::{StateMachine, State};
+mod state;
 
 #[entry]
 fn main() -> ! {
-    let (mut clock, mut itm) = lib::init();
+    let (mut clock, mut _itm) = lib::init();
+    let mut _state_machine = StateMachine::new(State::Time);
 
-    // Set time
 
-    // iprintln!(&mut itm.stim[0], "Hello there");
+    // Read switch position to know which time mode to use
 
-    let (hour, minute, seconds) = clock.time();
-
+    // Display iniatialization sequence?
     loop {
         // Step 1 - Check inputs
+        clock.update_time();
 
         // Step 2 - Check set time
 
