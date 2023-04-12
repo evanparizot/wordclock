@@ -7,6 +7,7 @@ version = "0.1.0"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+alloc-cortex-m = "0.4.4"
 cortex-m = "0.7.7"
 cortex-m-rt = "0.7.3"
 switch-hal = "0.4.0"

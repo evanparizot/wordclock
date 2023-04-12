@@ -1,5 +1,12 @@
 #![no_std]
+extern crate alloc;
 
+use alloc_cortex_m::CortexMHeap;
+
+#[global_allocator]
+static ALLOCATOR: CortexMHeap = CortexMHeap::empty();
+
+use alloc::boxed::Box;
 use ds323x::Ds323x;
 use max7219::MAX7219;
 pub use panic_itm; // panic handler
@@ -21,12 +28,15 @@ use stm32f3xx_hal::{
 
 pub mod clock;
 use clock::*;
-use times::Mode;
+use time::config::am::AdrianMorgan;
 
-pub mod times;
+pub mod time;
 
+const HEAP_SIZE: usize = 1024;
 
-pub fn init() -> (Clock, ITM) {
+pub fn init() -> Clock {
+    unsafe { ALLOCATOR.init(cortex_m_rt::heap_start() as usize, HEAP_SIZE)}
+
     let cp = cortex_m::Peripherals::take().unwrap();
     let dp = pac::Peripherals::take().unwrap();
 
@@ -107,9 +117,10 @@ pub fn init() -> (Clock, ITM) {
         display.set_intensity(a, 4).unwrap();
     }
 
-    (Clock {
-        display,
-        rtc,
-        mode: Mode::FiveMinute
-    }, cp.ITM)
+
+    Clock {
+        display: display,
+        clock: rtc,
+        mode: Box::new(AdrianMorgan{})
+    }
 }
