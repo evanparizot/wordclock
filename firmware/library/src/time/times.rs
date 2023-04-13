@@ -37,5 +37,5 @@ pub const BLANK: Phrase = [EMPTY, EMPTY, EMPTY, EMPTY];
 pub const ALL: Phrase = [FULL, FULL, FULL, FULL];
 
 pub trait TimeMode {
-    fn parse_time(&self, hours: u32, minutes: u32) -> Phrase;
+    fn get_time_arrays(&self, hours: u32, minutes: u32) -> Phrase;
 }

@@ -52,6 +52,8 @@ pub fn init() -> Clock {
         .pclk2(32.MHz())
         .freeze(&mut flash.acr);
 
+    let delay = Delay::new(cp.SYST, clocks);
+
     //  /$$$$$$  /$$$$$$   /$$$$$$
     // |_  $$_/ /$$__  $$ /$$__  $$
     //   | $$  |__/  \ $$| $$  \__/
@@ -108,19 +110,19 @@ pub fn init() -> Clock {
 
     let spi = Spi::new(dp.SPI2, (sck, miso, mosi), 3.MHz(), clocks, &mut rcc.apb1);
 
-    let displays = 3;
+    let displays = 4;
     let mut display = MAX7219::from_spi_cs(displays, spi, cs).unwrap();
 
     display.power_on().unwrap();
     for a in 0..displays {
         display.clear_display(a).unwrap();
-        display.set_intensity(a, 4).unwrap();
+        display.set_intensity(a, 8).unwrap();
     }
-
 
     Clock {
         display: display,
         clock: rtc,
+        delay: delay,
         mode: Box::new(AdrianMorgan{})
     }
 }

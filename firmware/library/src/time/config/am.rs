@@ -1,18 +1,13 @@
 use crate::time::times::{combine_phrases, Phrase, TimeMode, ALL, EMPTY};
 
 /*
-3 2
-0 1
- */
-
-/*
 ITxISxHA LFxTENxx
 AxQUARTE Rxxxxxxx
 TWENTYxF IVExxxxx
 HAPPYxxx BIRTHDAY
 xxxxxANN IVERSARY
-xTOxPAST xxMORGAN
-xANDxADR IANxxxxx
+xTOxPAST MORGANxx
+xxxxxxAN DxADRIAN
 THREExxx TWOxxONE
 
 xxSEVENx xxEIGHTx
@@ -22,54 +17,145 @@ ELEVENxx xxxTENxx
 xxxxxxxx xxOCLOCK
 INxTHExM ORNINGxx
 AFTERNOO NEVENING
-NOONxMID NIGHTxxx
+xxATxMID NIGHTxxx
 */
-// [0, 0, 0, 0, 0, 0, 0, 0]
+
 pub struct AdrianMorgan {}
 
 impl AdrianMorgan {
-    const ONE: Phrase = [EMPTY, EMPTY, [0, 0, 0, 0, 0, 0, 0, 0b00000111], EMPTY];
-    const TWO: Phrase = [EMPTY, EMPTY, [0, 0, 0, 0, 0, 0, 0, 0b11100000], EMPTY];
-    const THREE: Phrase = [EMPTY, [0, 0, 0, 0, 0, 0, 0, 0b11111000], EMPTY, EMPTY];
-    const FOUR: Phrase = [[0, 0b11110000, 0, 0, 0, 0, 0, 0], EMPTY, EMPTY, EMPTY];
-    const FIVE: Phrase = [EMPTY, [0, 0b00001111, 0, 0, 0, 0, 0, 0], EMPTY, EMPTY];
-    const SIX: Phrase = [[0, 0, 0b00111000, 0, 0, 0, 0, 0], EMPTY, EMPTY, EMPTY];
-    const SEVEN: Phrase = [[0b00111110, 0, 0, 0, 0, 0, 0, 0], EMPTY, EMPTY, EMPTY];
-    const EIGHT: Phrase = [EMPTY, [0b00111110, 0, 0, 0, 0, 0, 0, 0], EMPTY, EMPTY];
-    const NINE: Phrase = [EMPTY, [0, 0, 0b11110000, 0, 0, 0, 0, 0], EMPTY, EMPTY];
-    const TEN: Phrase = [EMPTY, [0, 0, 0, 0b00011100, 0, 0, 0, 0], EMPTY, EMPTY];
-    const ELEVEN: Phrase = [[0, 0, 0, 0b11111100, 0, 0, 0, 0], EMPTY, EMPTY, EMPTY];
+    const ONE: Phrase = [EMPTY, [0, 0, 0, 0, 0, 0, 0, 0b00000111], EMPTY, EMPTY];
+    const TWO: Phrase = [EMPTY, [0, 0, 0, 0, 0, 0, 0, 0b11100000], EMPTY, EMPTY];
+    const THREE: Phrase = [[0, 0, 0, 0, 0, 0, 0, 0b11111000], EMPTY, EMPTY, EMPTY];
+    const FOUR: Phrase = [EMPTY, EMPTY, [0, 0b11110000, 0, 0, 0, 0, 0, 0], EMPTY];
+    const FIVE: Phrase = [EMPTY, EMPTY, EMPTY, [0, 0b00001111, 0, 0, 0, 0, 0, 0]];
+    const SIX: Phrase = [EMPTY, EMPTY, [0, 0, 0b00111000, 0, 0, 0, 0, 0], EMPTY];
+    const SEVEN: Phrase = [EMPTY, EMPTY, [0b00111110, 0, 0, 0, 0, 0, 0, 0], EMPTY];
+    const EIGHT: Phrase = [EMPTY, EMPTY, EMPTY, [0b00111110, 0, 0, 0, 0, 0, 0, 0]];
+    const NINE: Phrase = [EMPTY, EMPTY, EMPTY, [0, 0, 0b11110000, 0, 0, 0, 0, 0]];
+    const TEN: Phrase = [EMPTY, EMPTY, EMPTY, [0, 0, 0, 0b00011100, 0, 0, 0, 0]];
+    const ELEVEN: Phrase = [EMPTY, EMPTY, [0, 0, 0, 0b11111100, 0, 0, 0, 0], EMPTY];
     const TWELVE: Phrase = [
+        EMPTY,
+        EMPTY,
         [0, 0b00000011, 0, 0, 0, 0, 0, 0],
         [0, 0b11110000, 0, 0, 0, 0, 0, 0],
+    ];
+
+    const FIVE_PAST: Phrase = [
+        [0, 0, 0b00000001, 0, 0, 0b00001111, 0, 0],
+        [0, 0, 0b11100000, 0, 0, 0, 0, 0],
+        EMPTY,
+        EMPTY,
+    ];
+    const TEN_PAST: Phrase = [
+        [0, 0, 0, 0, 0, 0b00001111, 0, 0],
+        [0b00011100, 0, 0, 0, 0, 0, 0, 0],
+        EMPTY,
+        EMPTY,
+    ];
+    const A_QUARTER_PAST: Phrase = [
+        [0, 0b10111111, 0, 0, 0, 0b00001111, 0, 0],
+        [0, 0b10000000, 0, 0, 0, 0, 0, 0],
+        EMPTY,
+        EMPTY,
+    ];
+    const TWENTY_PAST: Phrase = [
+        [0, 0, 0b11111100, 0, 0, 0b00001111, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        EMPTY,
+        EMPTY,
+    ];
+    const TWENTY_FIVE_PAST: Phrase = [
+        [0, 0, 0b11111101, 0, 0, 0b00001111, 0, 0],
+        [0, 0, 0b11100000, 0, 0, 0, 0, 0],
+        EMPTY,
+        EMPTY,
+    ];
+    const HALF_PAST: Phrase = [
+        [0b00000011, 0, 0, 0, 0, 0b00001111, 0, 0],
+        [0b11000000, 0, 0, 0, 0, 0, 0, 0],
+        EMPTY,
+        EMPTY,
+    ];
+    const TWENTY_FIVE_TO: Phrase = [
+        [0, 0, 0b11111101, 0, 0, 0b01100000, 0, 0],
+        [0, 0, 0b11100000, 0, 0, 0, 0, 0],
+        EMPTY,
+        EMPTY,
+    ];
+    const TWENTY_TO: Phrase = [
+        [0, 0, 0b11111100, 0, 0, 0b01100000, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        EMPTY,
+        EMPTY,
+    ];
+    const A_QUARTER_TO: Phrase = [
+        [0, 0b10111111, 0, 0, 0, 0b01100000, 0, 0],
+        [0, 0b10000000, 0, 0, 0, 0, 0, 0],
+        EMPTY,
+        EMPTY,
+    ];
+    const TEN_TO: Phrase = [
+        [0, 0, 0, 0, 0, 0b01100000, 0, 0],
+        [0b00011100, 0, 0, 0, 0, 0, 0, 0],
+        EMPTY,
+        EMPTY,
+    ];
+    const FIVE_TO: Phrase = [
+        [0, 0, 0b00000001, 0, 0, 0b01100000, 0, 0],
+        [0, 0, 0b11100000, 0, 0, 0, 0, 0],
         EMPTY,
         EMPTY,
     ];
 
-    const FIVE_PAST: Phrase = [EMPTY, EMPTY, EMPTY, EMPTY];
-    const TEN_PAST: Phrase = [EMPTY, EMPTY, EMPTY, EMPTY];
-    const QUARTER_PAST: Phrase = [EMPTY, EMPTY, EMPTY, EMPTY];
-    const TWENTY_PAST: Phrase = [EMPTY, EMPTY, EMPTY, EMPTY];
-    const TWENTY_FIVE_PAST: Phrase = [EMPTY, EMPTY, EMPTY, EMPTY];
-    const TWENTY_FIVE_TO: Phrase = [EMPTY, EMPTY, EMPTY, EMPTY];
-    const HALF_PAST: Phrase = [EMPTY, EMPTY, EMPTY, EMPTY];
-    const TWENTY_TO: Phrase = [EMPTY, EMPTY, EMPTY, EMPTY];
-    const A_QUARTER_TO: Phrase = [EMPTY, EMPTY, EMPTY, EMPTY];
-    const TEN_TO: Phrase = [EMPTY, EMPTY, EMPTY, EMPTY];
-    const FIVE_TO: Phrase = [EMPTY, EMPTY, EMPTY, EMPTY];
-
     const IT_IS: Phrase = [[0b1101_1000, 0, 0, 0, 0, 0, 0, 0], EMPTY, EMPTY, EMPTY];
     const O_CLOCK: Phrase = [EMPTY, EMPTY, EMPTY, [0, 0, 0, 0, 0b0011_1111, 0, 0, 0]];
-    const IN_THE_MORNING: Phrase = [EMPTY, EMPTY, EMPTY, EMPTY];
-    const IN_THE_AFTERNOON: Phrase = [EMPTY, EMPTY, EMPTY, EMPTY];
-    const IN_THE_EVENING: Phrase = [EMPTY, EMPTY, EMPTY, EMPTY];
-    const AT_NIGHT: Phrase = [EMPTY, EMPTY, [0,0,0,0,0,0,0,0b11111111], EMPTY];
+    const IN_THE_MORNING: Phrase = [
+        EMPTY,
+        EMPTY,
+        [0, 0, 0, 0, 0, 0b11011101, 0, 0],
+        [0, 0, 0, 0, 0, 0b11111100, 0, 0],
+    ];
+    const IN_THE_AFTERNOON: Phrase = [
+        EMPTY,
+        EMPTY,
+        [0, 0, 0, 0, 0, 0b11011100, 0b11111111, 0],
+        [0, 0, 0, 0, 0, 0, 0b10000000, 0],
+    ];
+    const IN_THE_EVENING: Phrase = [
+        EMPTY,
+        EMPTY,
+        [0, 0, 0, 0, 0, 0b11011100, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0b01111111, 0],
+    ];
+    const AT_NIGHT: Phrase = [
+        EMPTY,
+        EMPTY,
+        [0, 0, 0, 0, 0, 0, 0, 0b00110000],
+        [0, 0, 0, 0, 0, 0, 0, 0b11111000],
+    ];
+
+    const _HAPPY: Phrase = [[0, 0, 0, 0b11111000, 0, 0, 0, 0], EMPTY, EMPTY, EMPTY];
+    const _BIRTHDAY: Phrase = [EMPTY, [0, 0, 0, 0b11111111, 0, 0, 0, 0], EMPTY, EMPTY];
+    const _ANNIVERSARY: Phrase = [
+        [0, 0, 0, 0, 0b00000111, 0, 0, 0],
+        [0, 0, 0, 0, 0b11111111, 0, 0, 0],
+        EMPTY,
+        EMPTY,
+    ];
+    const _MORGAN: Phrase = [EMPTY, [0, 0, 0, 0, 0, 0b11111100, 0, 0], EMPTY, EMPTY];
+    const _AND: Phrase = [
+        [0, 0, 0, 0, 0, 0, 0b00000011, 0],
+        [0, 0, 0, 0, 0, 0, 0b10000000, 0],
+        EMPTY,
+        EMPTY,
+    ];
+    const _ADRIAN: Phrase = [EMPTY, [0, 0, 0, 0, 0, 0, 0b00111111, 0], EMPTY, EMPTY];
 }
 
 impl TimeMode for AdrianMorgan {
-    fn parse_time(&self, hour: u32, minutes: u32) -> Phrase {
-        // Map hour
-        let hour_phrase = match (hour, minutes) {
+    fn get_time_arrays(&self, hour: u32, minutes: u32) -> Phrase {
+        let hour_phrase: Phrase = match (hour, minutes) {
             (0 | 12, 31..=60) | (1 | 13, 0..=30) => AdrianMorgan::ONE,
             (1 | 13, 31..=60) | (2 | 14, 0..=30) => AdrianMorgan::TWO,
             (2 | 14, 31..=60) | (3 | 15, 0..=30) => AdrianMorgan::THREE,
@@ -85,12 +171,11 @@ impl TimeMode for AdrianMorgan {
             _ => ALL,
         };
 
-        // Map minutes
-        let minute_phrase = match minutes {
+        let minute_phrase: Phrase = match minutes {
             0..=4 => AdrianMorgan::O_CLOCK,
             5..=9 => AdrianMorgan::FIVE_PAST,
             10..=14 => AdrianMorgan::TEN_PAST,
-            15..=19 => AdrianMorgan::QUARTER_PAST,
+            15..=19 => AdrianMorgan::A_QUARTER_PAST,
             20..=24 => AdrianMorgan::TWENTY_PAST,
             25..=29 => AdrianMorgan::TWENTY_FIVE_PAST,
             30..=34 => AdrianMorgan::HALF_PAST,
@@ -102,7 +187,7 @@ impl TimeMode for AdrianMorgan {
             _ => ALL,
         };
 
-        let modifier_phrase = match hour {
+        let modifier_phrase: Phrase = match hour {
             7..=11 => AdrianMorgan::IN_THE_MORNING,
             12..=15 => AdrianMorgan::IN_THE_AFTERNOON,
             16..=20 => AdrianMorgan::IN_THE_EVENING,
@@ -114,8 +199,7 @@ impl TimeMode for AdrianMorgan {
             AdrianMorgan::IT_IS,
             hour_phrase,
             minute_phrase,
-            modifier_phrase,
-            AdrianMorgan::AT_NIGHT
+            modifier_phrase
         ])
     }
 }
