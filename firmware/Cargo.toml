@@ -18,3 +18,8 @@ rustflags = [
 
 [build]
 target = "thumbv7em-none-eabihf"
+
+[[bin]]
+name = "wordclock"
+test = false
+bench = false

@@ -14,6 +14,7 @@ pub use panic_itm; // panic handler
 pub use cortex_m::{asm::bkpt, iprint, iprintln, peripheral::ITM};
 pub use cortex_m_rt::entry;
 
+use stm32f3xx_hal::i2c::I2c;
 pub use stm32f3xx_hal::{
     delay::Delay,
     gpio::{gpioe, Output, PushPull},
@@ -22,20 +23,17 @@ pub use stm32f3xx_hal::{
     prelude::*,
     spi::Spi,
 };
-use stm32f3xx_hal::{
-    i2c::I2c,
-};
 
 pub mod clock;
 use clock::*;
-use time::config::am::AdrianMorgan;
+use time::times::TimeMode;
 
 pub mod time;
 
 const HEAP_SIZE: usize = 1024;
 
-pub fn init() -> Clock {
-    unsafe { ALLOCATOR.init(cortex_m_rt::heap_start() as usize, HEAP_SIZE)}
+pub fn init(mode: Box<dyn TimeMode>) -> Clock {
+    unsafe { ALLOCATOR.init(cortex_m_rt::heap_start() as usize, HEAP_SIZE) }
 
     let cp = cortex_m::Peripherals::take().unwrap();
     let dp = pac::Peripherals::take().unwrap();
@@ -123,6 +121,6 @@ pub fn init() -> Clock {
         display: display,
         clock: rtc,
         delay: delay,
-        mode: Box::new(AdrianMorgan{})
+        mode: mode,
     }
 }

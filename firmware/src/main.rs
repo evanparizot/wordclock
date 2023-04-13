@@ -2,11 +2,14 @@
 #![no_main]
 #![no_std]
 
-use lib::entry;
+extern crate alloc;
+
+use alloc::boxed::Box;
+use lib::{entry, time::config::am::AdrianMorgan};
 
 #[entry]
 fn main() -> ! {
-    let mut clock = lib::init();
+    let mut clock = lib::init(Box::new(AdrianMorgan {}));
 
     loop {
         clock.update_time();
