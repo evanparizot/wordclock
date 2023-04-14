@@ -1,4 +1,17 @@
-pub fn combine_phrases<const N: usize, const M: usize>(phrases: &[[[u8; N]; M]]) -> [[u8; N]; M] {
+pub type Phrase = [[u8; 8]; 4];
+
+pub const EMPTY: [u8; 8] = [u8::MIN; 8];
+pub const FULL: [u8; 8] = [u8::MAX; 8];
+pub const BLANK: Phrase = [EMPTY, EMPTY, EMPTY, EMPTY];
+pub const ALL: Phrase = [FULL, FULL, FULL, FULL];
+
+pub trait TimeMode {
+    fn get_time_arrays(&self, hours: u32, minutes: u32) -> Phrase;
+}
+
+pub fn combine_phrases<const N: usize, const M: usize>(
+    phrases: &[[[u8; N]; M]],
+) -> [[u8; N]; M] {
     let mut result = [[0; N]; M];
 
     match phrases.len() {
@@ -27,15 +40,4 @@ fn or_arrays<const N: usize>(one: [u8; N], two: [u8; N]) -> [u8; N] {
     }
 
     result
-}
-
-pub type Phrase = [[u8; 8]; 4];
-
-pub const EMPTY: [u8; 8] = [u8::MIN; 8];
-pub const FULL: [u8; 8] = [u8::MAX; 8];
-pub const BLANK: Phrase = [EMPTY, EMPTY, EMPTY, EMPTY];
-pub const ALL: Phrase = [FULL, FULL, FULL, FULL];
-
-pub trait TimeMode {
-    fn get_time_arrays(&self, hours: u32, minutes: u32) -> Phrase;
 }

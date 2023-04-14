@@ -2,15 +2,15 @@ extern crate alloc;
 use alloc::boxed::Box;
 use cortex_m::prelude::_embedded_hal_blocking_delay_DelayMs;
 use ds323x::{ic::DS3231, interface::I2cInterface, DateTimeAccess, Ds323x, Timelike};
-use max7219::{connectors::SpiConnectorSW, MAX7219};
-use stm32f3xx_hal::{
+use hal::{
     gpio::{Alternate, Gpiob, OpenDrain, Output, Pin, PushPull, U},
     i2c::I2c,
     pac::{I2C1, SPI2},
     spi::Spi, delay::Delay,
 };
+use max7219::{connectors::SpiConnectorSW, MAX7219};
 
-use crate::time::times::TimeMode;
+use crate::times::TimeMode;
 
 pub struct Clock {
     pub(crate) display: MAX7219<
@@ -43,7 +43,7 @@ pub struct Clock {
 }
 
 impl Clock {
-    pub fn update_time(&mut self) {
+    pub fn update_display_time(&mut self) {
         // Get current time, in hours, minutes and seconds
         let (hour, minutes, _seconds) = self.time();
         let to_write = self.mode.get_time_arrays(hour, minutes);
@@ -64,6 +64,10 @@ impl Clock {
 
     pub fn wait(&mut self, ms: u16) {
         self.delay.delay_ms(ms);
+    }
+
+    pub fn add_minutes(&mut self) {
+        // self.clock.set_minutes(minutes)
     }
 
     fn time(&mut self) -> (u32, u32, u32) {

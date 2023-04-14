@@ -20,6 +20,9 @@ monitor tpiu config internal itm.txt uart off 8000000
 # Turn on the itm port
 monitor itm port 0 on
 
+# Enable OpenOCD's semihosting support
+monitor arm semihosting enable
+
 # Set a breakpoint at main, aka entry
 break main
 
