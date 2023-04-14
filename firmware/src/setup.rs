@@ -1,34 +1,28 @@
-#![no_std]
+extern crate alloc;
 
+use alloc_cortex_m::CortexMHeap;
+
+#[global_allocator]
+static ALLOCATOR: CortexMHeap = CortexMHeap::empty();
+
+use alloc::boxed::Box;
 use ds323x::Ds323x;
+use hal::{delay::Delay, i2c::I2c, prelude::*, spi::Spi};
 use max7219::MAX7219;
-pub use panic_itm; // panic handler
 
 pub use cortex_m::{asm::bkpt, iprint, iprintln, peripheral::ITM};
 pub use cortex_m_rt::entry;
 
-pub use stm32f3xx_hal::{
-    delay::Delay,
-    gpio::{gpioe, Output, PushPull},
-    hal::blocking::delay::DelayMs,
-    pac,
-    prelude::*,
-    spi::Spi,
-};
-use stm32f3xx_hal::{
-    i2c::I2c,
-};
+use crate::{clock::Clock, times::TimeMode};
 
-pub mod clock;
-use clock::*;
-use times::Mode;
+// const HEAP_SIZE: usize = 1024;
 
-pub mod times;
-
-
-pub fn init() -> (Clock, ITM) {
-    let cp = cortex_m::Peripherals::take().unwrap();
-    let dp = pac::Peripherals::take().unwrap();
+pub fn init(
+    cp: cortex_m::Peripherals,
+    dp: hal::pac::Peripherals,
+    mode: Box<dyn TimeMode>,
+) -> Clock {
+    // unsafe { ALLOCATOR.init(cortex_m_rt::heap_start() as usize, HEAP_SIZE) }
 
     let mut flash = dp.FLASH.constrain();
     let mut rcc = dp.RCC.constrain();
@@ -41,6 +35,8 @@ pub fn init() -> (Clock, ITM) {
         .pclk1(32.MHz())
         .pclk2(32.MHz())
         .freeze(&mut flash.acr);
+
+    let delay = Delay::new(cp.SYST, clocks);
 
     //  /$$$$$$  /$$$$$$   /$$$$$$
     // |_  $$_/ /$$__  $$ /$$__  $$
@@ -98,18 +94,19 @@ pub fn init() -> (Clock, ITM) {
 
     let spi = Spi::new(dp.SPI2, (sck, miso, mosi), 3.MHz(), clocks, &mut rcc.apb1);
 
-    let displays = 3;
+    let displays = 4;
     let mut display = MAX7219::from_spi_cs(displays, spi, cs).unwrap();
 
     display.power_on().unwrap();
     for a in 0..displays {
         display.clear_display(a).unwrap();
-        display.set_intensity(a, 4).unwrap();
+        display.set_intensity(a, 8).unwrap();
     }
 
-    (Clock {
-        display,
-        rtc,
-        mode: Mode::FiveMinute
-    }, cp.ITM)
+    Clock {
+        display: display,
+        clock: rtc,
+        delay: delay,
+        mode: mode,
+    }
 }

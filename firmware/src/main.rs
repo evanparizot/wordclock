@@ -1,25 +1,57 @@
-#![deny(unsafe_code)]
+// #![deny(unsafe_code)]
 #![no_main]
 #![no_std]
 
-use lib::{entry};
-use state::{StateMachine, State};
-mod state;
+use panic_semihosting as _;
+extern crate alloc;
 
-#[entry]
-fn main() -> ! {
-    let (mut clock, mut _itm) = lib::init();
-    let mut _state_machine = StateMachine::new(State::Time);
+mod clock;
+mod config;
+mod setup;
+mod times;
 
+#[rtic::app(device = hal::pac, peripherals = true)]
+mod app {
+    use cortex_m_semihosting::hprintln;
+    // use hal::prelude::*;
 
-    // Read switch position to know which time mode to use
+    use crate::{clock::Clock, config::am::AdrianMorgan};
 
-    // Display iniatialization sequence?
-    loop {
-        // Step 1 - Check inputs
-        clock.update_time();
+    #[shared]
+    struct Shared {
+        clock: Clock,
+    }
 
-        // Step 2 - Check set time
+    #[local]
+    struct Local {}
 
+    #[init]
+    fn init(ctx: init::Context) -> (Shared, Local, init::Monotonics) {
+        let dp = ctx.device;
+        let cp = ctx.core;
+
+        let clock = crate::setup::init(cp, dp, alloc::boxed::Box::new(AdrianMorgan {}));
+
+        (Shared { clock }, Local {}, init::Monotonics())
+    }
+
+    #[idle(shared = [clock])]
+    fn idle(ctx: idle::Context) -> ! {
+        let mut clock = ctx.shared.clock;
+        hprintln!("Starting up!");
+        loop {
+            clock.lock(|clock| {
+                clock.update_display_time();
+            });
+        }
     }
 }
+
+// #[entry]
+// fn main() -> ! {
+//     let mut clock = init::init(Box::new(AdrianMorgan {}));
+
+//     loop {
+//         clock.update_display_time();
+//     }
+// }
