@@ -624,7 +624,6 @@
     )
   )
 
-
   (junction (at 88.9 41.91) (diameter 0) (color 0 0 0 0)
     (uuid 13976418-f309-4aac-b513-fe1086b5502f)
   )
@@ -1541,7 +1540,7 @@
     (property "Value" "0" (at 44.45 166.37 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 46.99 167.132 90)
+    (property "Footprint" "Resistor_SMD:R_1210_3225Metric" (at 46.99 167.132 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 46.99 168.91 0)
