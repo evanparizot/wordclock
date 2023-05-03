@@ -310,6 +310,98 @@
         )
       )
     )
+    (symbol "GND_1" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
+      (property "Reference" "#PWR" (at 0 -6.35 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Value" "GND_1" (at 0 -3.81 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datasheet" "" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_keywords" "global power" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_description" "Power symbol creates a global label with name \"GND\" , ground" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "GND_1_0_1"
+        (polyline
+          (pts
+            (xy 0 0)
+            (xy 0 -1.27)
+            (xy 1.27 -1.27)
+            (xy 0 -2.54)
+            (xy -1.27 -1.27)
+            (xy 0 -1.27)
+          )
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+      )
+      (symbol "GND_1_1_1"
+        (pin power_in line (at 0 0 270) (length 0) hide
+          (name "GND" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
+    (symbol "power:+3.3V" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
+      (property "Reference" "#PWR" (at 0 -3.81 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Value" "+3.3V" (at 0 3.556 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datasheet" "" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_keywords" "global power" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_description" "Power symbol creates a global label with name \"+3.3V\"" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "+3.3V_0_1"
+        (polyline
+          (pts
+            (xy -0.762 1.27)
+            (xy 0 2.54)
+          )
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy 0 0)
+            (xy 0 2.54)
+          )
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy 0 2.54)
+            (xy 0.762 1.27)
+          )
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+      )
+      (symbol "+3.3V_1_1"
+        (pin power_in line (at 0 0 90) (length 0) hide
+          (name "+3.3V" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
     (symbol "power:GND" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
       (property "Reference" "#PWR" (at 0 -6.35 0)
         (effects (font (size 1.27 1.27)) hide)
@@ -346,58 +438,6 @@
       (symbol "GND_1_1"
         (pin power_in line (at 0 0 270) (length 0) hide
           (name "GND" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-    (symbol "power:VDD" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
-      (property "Reference" "#PWR" (at 0 -3.81 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Value" "VDD" (at 0 3.81 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_keywords" "power-flag" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_description" "Power symbol creates a global label with name \"VDD\"" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "VDD_0_1"
-        (polyline
-          (pts
-            (xy -0.762 1.27)
-            (xy 0 2.54)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0 0)
-            (xy 0 2.54)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0 2.54)
-            (xy 0.762 1.27)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "VDD_1_1"
-        (pin power_in line (at 0 0 90) (length 0) hide
-          (name "VDD" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
         )
       )
@@ -1415,6 +1455,10 @@
     (stroke (width 0) (type default))
     (uuid b48c980c-b8c3-4045-9991-8d597e52b69a)
   )
+  (wire (pts (xy 69.85 122.555) (xy 69.85 120.65))
+    (stroke (width 0) (type default))
+    (uuid b4cf8fa8-02d8-4134-b043-8839013b46ac)
+  )
   (wire (pts (xy 44.45 63.5) (xy 57.15 63.5))
     (stroke (width 0) (type default))
     (uuid b599a1bb-4325-4916-9087-eefcfe6b370d)
@@ -1482,6 +1526,10 @@
   (wire (pts (xy 182.88 111.76) (xy 189.23 111.76))
     (stroke (width 0) (type default))
     (uuid c8f2ebd7-8d37-44c9-8f40-8df462e23e69)
+  )
+  (wire (pts (xy 44.45 71.12) (xy 44.45 73.66))
+    (stroke (width 0) (type default))
+    (uuid c96bbb01-b08c-4f12-a499-9459bfcf372a)
   )
   (wire (pts (xy 264.16 41.91) (xy 264.16 48.26))
     (stroke (width 0) (type default))
@@ -2510,35 +2558,35 @@
     )
   )
 
-  (symbol (lib_id "power:GND") (at 69.85 120.65 0) (unit 1)
+  (symbol (lib_id "power:GND") (at 69.85 122.555 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 2d39e8dd-5cd3-486a-9ff1-ba2667cc4006)
-    (property "Reference" "#PWR0112" (at 69.85 127 0)
+    (property "Reference" "#PWR0142" (at 69.85 128.905 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "GND" (at 69.85 125.73 0)
+    (property "Value" "GND" (at 69.85 127.635 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 69.85 120.65 0)
+    (property "Footprint" "" (at 69.85 122.555 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 69.85 120.65 0)
+    (property "Datasheet" "" (at 69.85 122.555 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid f135ab75-23db-4edd-9164-a32a1143a3cb))
     (instances
       (project "wordclock"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/d4281d6d-2eb9-4535-8e23-e3f0d7682461"
-          (reference "#PWR0112") (unit 1)
+          (reference "#PWR0142") (unit 1)
         )
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/0c0c03bc-544d-4b35-8963-94459c61ffb3"
-          (reference "#PWR0115") (unit 1)
+          (reference "#PWR0145") (unit 1)
         )
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/d543195c-3059-47ce-9fde-7b51ccc019ad"
-          (reference "#PWR0118") (unit 1)
+          (reference "#PWR0148") (unit 1)
         )
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/a8e851d8-618e-418d-98b7-321e284801c1"
-          (reference "#PWR0121") (unit 1)
+          (reference "#PWR0151") (unit 1)
         )
       )
     )
@@ -2757,7 +2805,7 @@
   (symbol (lib_id "Device:C") (at 44.45 67.31 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 43815604-c935-44d6-8130-5590c6cd973e)
-    (property "Reference" "C11" (at 48.26 66.0399 0)
+    (property "Reference" "C19" (at 48.26 66.0399 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 48.26 68.5799 0)
@@ -2774,16 +2822,16 @@
     (instances
       (project "wordclock"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/d4281d6d-2eb9-4535-8e23-e3f0d7682461"
-          (reference "C11") (unit 1)
+          (reference "C19") (unit 1)
         )
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/0c0c03bc-544d-4b35-8963-94459c61ffb3"
-          (reference "C12") (unit 1)
+          (reference "C20") (unit 1)
         )
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/d543195c-3059-47ce-9fde-7b51ccc019ad"
-          (reference "C13") (unit 1)
+          (reference "C21") (unit 1)
         )
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/a8e851d8-618e-418d-98b7-321e284801c1"
-          (reference "C14") (unit 1)
+          (reference "C22") (unit 1)
         )
       )
     )
@@ -2854,40 +2902,6 @@
         )
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/a8e851d8-618e-418d-98b7-321e284801c1"
           (reference "D198") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:VDD") (at 69.85 60.96 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 4f85609e-c9c6-4e92-8347-49e9c161a905)
-    (property "Reference" "#PWR0110" (at 69.85 64.77 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "VDD" (at 69.85 55.88 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 69.85 60.96 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 69.85 60.96 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid a8813347-9099-45b5-b8ee-152e66726787))
-    (instances
-      (project "wordclock"
-        (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/d4281d6d-2eb9-4535-8e23-e3f0d7682461"
-          (reference "#PWR0110") (unit 1)
-        )
-        (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/0c0c03bc-544d-4b35-8963-94459c61ffb3"
-          (reference "#PWR0113") (unit 1)
-        )
-        (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/d543195c-3059-47ce-9fde-7b51ccc019ad"
-          (reference "#PWR0116") (unit 1)
-        )
-        (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/a8e851d8-618e-418d-98b7-321e284801c1"
-          (reference "#PWR0119") (unit 1)
         )
       )
     )
@@ -3098,6 +3112,40 @@
         )
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/a8e851d8-618e-418d-98b7-321e284801c1"
           (reference "D207") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_name "GND_1") (lib_id "power:GND") (at 44.45 73.66 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 6909226d-487c-45b1-b21c-906cf2ff31b8)
+    (property "Reference" "#PWR0141" (at 44.45 80.01 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GND" (at 44.45 78.74 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 44.45 73.66 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 44.45 73.66 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid eda18b92-22a3-46e4-ba63-d461e606473c))
+    (instances
+      (project "wordclock"
+        (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/d4281d6d-2eb9-4535-8e23-e3f0d7682461"
+          (reference "#PWR0141") (unit 1)
+        )
+        (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/0c0c03bc-544d-4b35-8963-94459c61ffb3"
+          (reference "#PWR0144") (unit 1)
+        )
+        (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/d543195c-3059-47ce-9fde-7b51ccc019ad"
+          (reference "#PWR0147") (unit 1)
+        )
+        (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/a8e851d8-618e-418d-98b7-321e284801c1"
+          (reference "#PWR0150") (unit 1)
         )
       )
     )
@@ -3593,6 +3641,40 @@
     )
   )
 
+  (symbol (lib_id "power:+3.3V") (at 69.85 60.96 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 9c0fb9dd-9298-4207-a53e-308b15c8706a)
+    (property "Reference" "#PWR0140" (at 69.85 64.77 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "+3.3V" (at 69.85 57.15 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 69.85 60.96 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 69.85 60.96 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 0e70b61c-481f-4cf3-9d0c-57c676177b3d))
+    (instances
+      (project "wordclock"
+        (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/d4281d6d-2eb9-4535-8e23-e3f0d7682461"
+          (reference "#PWR0140") (unit 1)
+        )
+        (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/0c0c03bc-544d-4b35-8963-94459c61ffb3"
+          (reference "#PWR0143") (unit 1)
+        )
+        (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/d543195c-3059-47ce-9fde-7b51ccc019ad"
+          (reference "#PWR0146") (unit 1)
+        )
+        (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/a8e851d8-618e-418d-98b7-321e284801c1"
+          (reference "#PWR0149") (unit 1)
+        )
+      )
+    )
+  )
+
   (symbol (lib_id "Device:LED") (at 257.81 77.47 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 9c139bf7-0505-427b-9828-bda016b46da6)
@@ -3771,7 +3853,7 @@
   (symbol (lib_id "Device:R") (at 57.15 68.58 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b0b7880e-988a-4df8-aa5d-d2ae6a86f078)
-    (property "Reference" "R2" (at 59.69 67.3099 0)
+    (property "Reference" "R13" (at 59.69 67.3099 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "9.53k" (at 59.69 69.8499 0)
@@ -3788,16 +3870,16 @@
     (instances
       (project "wordclock"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/d4281d6d-2eb9-4535-8e23-e3f0d7682461"
-          (reference "R2") (unit 1)
+          (reference "R13") (unit 1)
         )
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/0c0c03bc-544d-4b35-8963-94459c61ffb3"
-          (reference "R3") (unit 1)
+          (reference "R14") (unit 1)
         )
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/d543195c-3059-47ce-9fde-7b51ccc019ad"
-          (reference "R4") (unit 1)
+          (reference "R15") (unit 1)
         )
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/a8e851d8-618e-418d-98b7-321e284801c1"
-          (reference "R5") (unit 1)
+          (reference "R16") (unit 1)
         )
       )
     )
@@ -3943,40 +4025,6 @@
     )
   )
 
-  (symbol (lib_id "power:GND") (at 44.45 71.12 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid c6ce506a-e489-49bd-9d62-9fef624b37ec)
-    (property "Reference" "#PWR0111" (at 44.45 77.47 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 44.45 76.2 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 44.45 71.12 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 44.45 71.12 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 61e6212f-89a9-4130-b0cf-d4dd5c52c332))
-    (instances
-      (project "wordclock"
-        (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/d4281d6d-2eb9-4535-8e23-e3f0d7682461"
-          (reference "#PWR0111") (unit 1)
-        )
-        (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/0c0c03bc-544d-4b35-8963-94459c61ffb3"
-          (reference "#PWR0114") (unit 1)
-        )
-        (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/d543195c-3059-47ce-9fde-7b51ccc019ad"
-          (reference "#PWR0117") (unit 1)
-        )
-        (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/a8e851d8-618e-418d-98b7-321e284801c1"
-          (reference "#PWR0120") (unit 1)
-        )
-      )
-    )
-  )
-
   (symbol (lib_id "Device:LED") (at 167.64 52.07 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid cf66f27f-2855-459a-8b14-035584509ced)
@@ -4085,7 +4133,7 @@
   (symbol (lib_id "Driver_LED:MAX7219") (at 69.85 95.25 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid e16f96e1-bc68-4ea4-a0fc-5606a14bde76)
-    (property "Reference" "U2" (at 71.8694 67.31 0)
+    (property "Reference" "U1" (at 71.8694 67.31 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "MAX7219" (at 71.8694 69.85 0)
@@ -4124,16 +4172,16 @@
     (instances
       (project "wordclock"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/d4281d6d-2eb9-4535-8e23-e3f0d7682461"
-          (reference "U2") (unit 1)
+          (reference "U1") (unit 1)
         )
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/0c0c03bc-544d-4b35-8963-94459c61ffb3"
-          (reference "U3") (unit 1)
+          (reference "U2") (unit 1)
         )
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/d543195c-3059-47ce-9fde-7b51ccc019ad"
-          (reference "U4") (unit 1)
+          (reference "U3") (unit 1)
         )
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1/a8e851d8-618e-418d-98b7-321e284801c1"
-          (reference "U5") (unit 1)
+          (reference "U4") (unit 1)
         )
       )
     )
