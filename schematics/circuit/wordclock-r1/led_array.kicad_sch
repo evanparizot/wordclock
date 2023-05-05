@@ -6,7 +6,7 @@
 
   (title_block
     (title "Led Array")
-    (rev "0.0.1")
+    (rev "1")
   )
 
   (lib_symbols

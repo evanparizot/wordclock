@@ -6,7 +6,7 @@
 
   (title_block
     (title "Wordclock")
-    (rev "0.0.1")
+    (rev "1")
   )
 
   (lib_symbols
@@ -1241,41 +1241,6 @@
         )
       )
     )
-    (symbol "Mechanical:MountingHole_Pad" (pin_numbers hide) (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
-      (property "Reference" "H" (at 0 6.35 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Value" "MountingHole_Pad" (at 0 4.445 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "~" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_keywords" "mounting hole" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_description" "Mounting Hole with connection" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_fp_filters" "MountingHole*Pad*" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "MountingHole_Pad_0_1"
-        (circle (center 0 1.27) (radius 1.27)
-          (stroke (width 1.27) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "MountingHole_Pad_1_1"
-        (pin input line (at 0 -2.54 90) (length 2.54)
-          (name "1" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
     (symbol "Memory_EEPROM:AT24CS02-SSHM" (in_bom yes) (on_board yes)
       (property "Reference" "U" (at -7.62 6.35 0)
         (effects (font (size 1.27 1.27)))
@@ -2129,9 +2094,6 @@
     )
   )
 
-  (junction (at 376.555 130.81) (diameter 0) (color 0 0 0 0)
-    (uuid 05967fbb-d4cb-448b-bd67-e59b30aee85b)
-  )
   (junction (at 34.29 226.695) (diameter 0) (color 0 0 0 0)
     (uuid 2df71853-9705-4079-a03c-82085c0dfdc4)
   )
@@ -2146,9 +2108,6 @@
   )
   (junction (at 31.75 170.18) (diameter 0) (color 0 0 0 0)
     (uuid 49b25e70-152d-4563-9544-43534a082726)
-  )
-  (junction (at 376.555 139.065) (diameter 0) (color 0 0 0 0)
-    (uuid 4b02bb45-6412-45ef-885c-14517dca1590)
   )
   (junction (at 41.91 170.18) (diameter 0) (color 0 0 0 0)
     (uuid 54db1c47-976b-4b30-a5e5-0cdf68c25264)
@@ -2177,6 +2136,9 @@
   (junction (at 21.59 161.925) (diameter 0) (color 0 0 0 0)
     (uuid 6f57cb58-edef-4ab4-a6b5-6c4f33e490af)
   )
+  (junction (at 123.825 32.385) (diameter 0) (color 0 0 0 0)
+    (uuid 70868309-6e75-4f84-957e-67eea257defe)
+  )
   (junction (at 313.055 43.18) (diameter 0) (color 0 0 0 0)
     (uuid 77459130-66da-4aa3-949d-ab41d2f40201)
   )
@@ -2203,9 +2165,6 @@
   )
   (junction (at 38.1 260.35) (diameter 0) (color 0 0 0 0)
     (uuid a263027a-bfa5-49b2-b9f6-df9457ff6cc0)
-  )
-  (junction (at 135.255 32.385) (diameter 0) (color 0 0 0 0)
-    (uuid a4fce846-6c8a-4665-b4e1-ef67ad1e9bea)
   )
   (junction (at 241.935 269.24) (diameter 0) (color 0 0 0 0)
     (uuid ab5f6153-4ce1-4b68-ba33-84a5bd52122e)
@@ -2248,9 +2207,6 @@
   )
   (junction (at 62.23 161.925) (diameter 0) (color 0 0 0 0)
     (uuid e6d75a58-2267-4dc7-8f9c-9f79eaabbfa4)
-  )
-  (junction (at 376.555 122.555) (diameter 0) (color 0 0 0 0)
-    (uuid ec79e4cf-9c30-4316-bb14-2eee03374238)
   )
   (junction (at 21.59 170.18) (diameter 0) (color 0 0 0 0)
     (uuid f1bed3ab-0e19-494d-acfb-8e975c500ed2)
@@ -2352,10 +2308,6 @@
     (stroke (width 0) (type default))
     (uuid 06b19c22-c6db-4f86-8dba-c6cc83a961ea)
   )
-  (wire (pts (xy 376.555 114.935) (xy 379.73 114.935))
-    (stroke (width 0) (type default))
-    (uuid 06b83c2a-a239-4b64-ad97-6ddcb31d5d77)
-  )
   (wire (pts (xy 52.07 161.925) (xy 52.07 163.83))
     (stroke (width 0) (type default))
     (uuid 075e596f-92d1-4a25-999a-360ac7d3f73a)
@@ -2412,18 +2364,6 @@
     (stroke (width 0) (type default))
     (uuid 14f1ad62-1908-4cb7-b2e1-df52fca94f8d)
   )
-  (wire (pts (xy 365.125 88.265) (xy 377.825 88.265))
-    (stroke (width 0) (type default))
-    (uuid 15b97ec7-dd7a-43fc-bf93-7e1774d6a25a)
-  )
-  (wire (pts (xy 99.695 32.385) (xy 102.235 32.385))
-    (stroke (width 0) (type default))
-    (uuid 15d31df1-5d8c-4b11-95e2-6f7148d98a92)
-  )
-  (wire (pts (xy 365.125 48.895) (xy 365.125 67.945))
-    (stroke (width 0) (type default))
-    (uuid 1a3220a5-705d-44e8-af5d-864ff922673f)
-  )
   (wire (pts (xy 62.23 170.18) (xy 72.39 170.18))
     (stroke (width 0) (type default))
     (uuid 1b6ff929-4812-4e4e-8af4-9ff3bf9553bb)
@@ -2468,13 +2408,9 @@
     (stroke (width 0) (type default))
     (uuid 278adadd-a211-4a4f-8056-df45b5287220)
   )
-  (wire (pts (xy 124.46 32.385) (xy 135.255 32.385))
+  (wire (pts (xy 113.03 32.385) (xy 123.825 32.385))
     (stroke (width 0) (type default))
     (uuid 28261d78-6da6-4cbf-9e8c-b35ae4fbc434)
-  )
-  (wire (pts (xy 365.125 46.355) (xy 377.825 46.355))
-    (stroke (width 0) (type default))
-    (uuid 28f6ffe7-f2f4-45ec-abbe-b86c4bc6af06)
   )
   (wire (pts (xy 352.425 145.415) (xy 335.28 145.415))
     (stroke (width 0) (type default))
@@ -2507,10 +2443,6 @@
   (wire (pts (xy 217.805 114.3) (xy 217.805 116.84))
     (stroke (width 0) (type default))
     (uuid 3103fe5f-04ab-4029-ab4f-7c032e4cf41f)
-  )
-  (wire (pts (xy 377.825 70.485) (xy 365.125 70.485))
-    (stroke (width 0) (type default))
-    (uuid 36b58672-9e1d-4737-8a36-503e0308d592)
   )
   (wire (pts (xy 38.1 260.35) (xy 38.1 266.065))
     (stroke (width 0) (type default))
@@ -2572,10 +2504,6 @@
     (stroke (width 0) (type default))
     (uuid 52fdb18a-ea62-460d-8cbe-fb4c8bce8ced)
   )
-  (wire (pts (xy 365.125 67.945) (xy 377.825 67.945))
-    (stroke (width 0) (type default))
-    (uuid 538c70f8-3355-467c-9589-8e328a1dc2ff)
-  )
   (wire (pts (xy 251.46 259.08) (xy 251.46 261.62))
     (stroke (width 0) (type default))
     (uuid 53a908d1-26cc-4834-9492-47f89da839aa)
@@ -2600,10 +2528,6 @@
     (stroke (width 0) (type default))
     (uuid 5913e06a-2bff-4d62-8a39-ed3ee640766a)
   )
-  (wire (pts (xy 377.825 48.895) (xy 365.125 48.895))
-    (stroke (width 0) (type default))
-    (uuid 5ab8b65b-06bb-4932-ac55-1e6e42c70360)
-  )
   (wire (pts (xy 41.91 211.455) (xy 41.91 215.265))
     (stroke (width 0) (type default))
     (uuid 5af8741c-b0b5-4c23-9c34-6f1c2ebff187)
@@ -2627,10 +2551,6 @@
   (wire (pts (xy 30.48 146.05) (xy 40.64 146.05))
     (stroke (width 0) (type default))
     (uuid 5f404d93-75b7-436c-9ebe-419dc987ef40)
-  )
-  (wire (pts (xy 135.255 32.385) (xy 144.78 32.385))
-    (stroke (width 0) (type default))
-    (uuid 5f6b8662-5bf8-413e-a239-d8a1817f9a43)
   )
   (wire (pts (xy 205.105 115.57) (xy 205.105 116.84))
     (stroke (width 0) (type default))
@@ -2696,14 +2616,6 @@
     (stroke (width 0) (type default))
     (uuid 7824be65-d085-4fbc-a66d-65364e8e908c)
   )
-  (wire (pts (xy 376.555 139.065) (xy 379.73 139.065))
-    (stroke (width 0) (type default))
-    (uuid 7a671d68-0662-4635-b669-fff1f1a5e514)
-  )
-  (wire (pts (xy 376.555 139.065) (xy 376.555 130.81))
-    (stroke (width 0) (type default))
-    (uuid 7cc5d962-b2b5-41c7-9301-d5332c9a8e79)
-  )
   (wire (pts (xy 118.745 59.69) (xy 118.745 61.595))
     (stroke (width 0) (type default))
     (uuid 7e0a78ec-02aa-47ac-b757-99b3052b0377)
@@ -2734,10 +2646,6 @@
     (uuid 838e10c4-eeea-434e-ae77-18a64956a297)
   )
 
-  (wire (pts (xy 376.555 122.555) (xy 376.555 114.935))
-    (stroke (width 0) (type default))
-    (uuid 868529c2-ec5b-484b-affd-dd6336caea1e)
-  )
   (wire (pts (xy 43.18 260.35) (xy 38.1 260.35))
     (stroke (width 0) (type default))
     (uuid 87b25160-96cb-4dcd-8494-a69fcd18cb6e)
@@ -2758,11 +2666,15 @@
     (stroke (width 0) (type default))
     (uuid 8a9cda02-897e-433b-b1da-b0f087c65833)
   )
+  (wire (pts (xy 123.825 32.385) (xy 129.54 32.385))
+    (stroke (width 0) (type default))
+    (uuid 8aa7af84-a575-4191-8786-0009ce19ddc7)
+  )
   (wire (pts (xy 46.355 266.065) (xy 38.1 266.065))
     (stroke (width 0) (type default))
     (uuid 8b108c16-fd59-4ac9-8189-12b0a9b1a0bb)
   )
-  (wire (pts (xy 135.255 31.115) (xy 135.255 32.385))
+  (wire (pts (xy 123.825 31.115) (xy 123.825 32.385))
     (stroke (width 0) (type default))
     (uuid 8bf45d4f-2585-4a2b-992e-b01c2f4c3ca0)
   )
@@ -2783,10 +2695,6 @@
     (uuid 900b6b78-fd5e-4ac7-ad69-7a5dfe676816)
   )
 
-  (wire (pts (xy 109.855 32.385) (xy 114.3 32.385))
-    (stroke (width 0) (type default))
-    (uuid 91867550-3b16-4f94-b033-97409e874c6a)
-  )
   (wire (pts (xy 207.645 208.28) (xy 207.645 209.55))
     (stroke (width 0) (type default))
     (uuid 93ea6828-9276-45a8-8a81-b5ecd39890f7)
@@ -2867,6 +2775,10 @@
     (stroke (width 0) (type default))
     (uuid b059285c-4dfb-45da-a2a8-0d3d1e45cd21)
   )
+  (wire (pts (xy 88.265 29.845) (xy 88.265 32.385))
+    (stroke (width 0) (type default))
+    (uuid b24b0d8a-5239-4afc-b237-8b902b2b9af4)
+  )
   (wire (pts (xy 301.625 26.035) (xy 301.625 33.655))
     (stroke (width 0) (type default))
     (uuid b29d725b-b0c6-444d-a7cc-7ed1aa773a1d)
@@ -2882,6 +2794,10 @@
   (wire (pts (xy 313.055 33.655) (xy 323.215 33.655))
     (stroke (width 0) (type default))
     (uuid b5ba7e29-f578-4569-ab92-e154a482000c)
+  )
+  (wire (pts (xy 283.21 249.555) (xy 283.21 253.365))
+    (stroke (width 0) (type default))
+    (uuid b70000c4-6bd8-4b51-be06-809df2b12487)
   )
   (wire (pts (xy 365.76 223.52) (xy 365.76 224.79))
     (stroke (width 0) (type default))
@@ -2899,10 +2815,6 @@
   (wire (pts (xy 46.355 255.905) (xy 46.355 257.81))
     (stroke (width 0) (type default))
     (uuid b875f26d-6589-41d0-9bb9-f204fe8bcfed)
-  )
-  (wire (pts (xy 365.125 28.575) (xy 365.125 46.355))
-    (stroke (width 0) (type default))
-    (uuid ba0ae45b-03bf-4936-b519-782e33aea081)
   )
   (wire (pts (xy 30.48 146.05) (xy 30.48 147.32))
     (stroke (width 0) (type default))
@@ -2936,17 +2848,9 @@
     (stroke (width 0) (type default))
     (uuid c508e739-e676-45d7-9bce-5b958a3a24eb)
   )
-  (wire (pts (xy 376.555 130.81) (xy 376.555 122.555))
-    (stroke (width 0) (type default))
-    (uuid c5b9b89f-42be-41c6-baf1-ef506e1e4f7d)
-  )
   (wire (pts (xy 323.215 41.275) (xy 323.215 43.18))
     (stroke (width 0) (type default))
     (uuid c6e04610-2065-4314-b96e-4778171573fe)
-  )
-  (wire (pts (xy 365.125 70.485) (xy 365.125 88.265))
-    (stroke (width 0) (type default))
-    (uuid c72643eb-60a9-4b0e-9b9e-97b07d3690c4)
   )
   (wire (pts (xy 203.835 259.715) (xy 203.835 262.89))
     (stroke (width 0) (type default))
@@ -2956,10 +2860,6 @@
     (stroke (width 0) (type default))
     (uuid c9e8fd65-42a6-4d6c-9079-1ed589bf04a1)
   )
-  (wire (pts (xy 376.555 144.145) (xy 376.555 139.065))
-    (stroke (width 0) (type default))
-    (uuid ca0d3d72-3d36-487b-b975-ea6e2a29b19a)
-  )
   (wire (pts (xy 337.185 31.115) (xy 337.185 33.655))
     (stroke (width 0) (type default))
     (uuid cd927252-87f7-4663-bd3e-e925a15b90c2)
@@ -2967,10 +2867,6 @@
   (wire (pts (xy 212.725 258.445) (xy 212.725 260.985))
     (stroke (width 0) (type default))
     (uuid ce6b9532-4a98-4593-9952-39b75b0f4208)
-  )
-  (wire (pts (xy 99.695 29.845) (xy 99.695 32.385))
-    (stroke (width 0) (type default))
-    (uuid cf217ff1-5a02-4e04-a459-2ab47420b966)
   )
   (wire (pts (xy 21.59 160.655) (xy 21.59 161.925))
     (stroke (width 0) (type default))
@@ -2980,6 +2876,10 @@
     (stroke (width 0) (type default))
     (uuid d188b82d-e995-431c-bdbe-9852bfdaeeaa)
   )
+  (wire (pts (xy 137.16 32.385) (xy 144.78 32.385))
+    (stroke (width 0) (type default))
+    (uuid d211c2d2-8b8d-4a4e-8b59-bb755f991833)
+  )
   (wire (pts (xy 205.105 115.57) (xy 207.645 115.57))
     (stroke (width 0) (type default))
     (uuid d213aafc-1922-456c-8670-54d9e1516bd1)
@@ -2988,7 +2888,7 @@
     (stroke (width 0) (type default))
     (uuid d3702d47-c498-41ac-ac29-1e44d78ff68c)
   )
-  (wire (pts (xy 135.255 22.225) (xy 135.255 23.495))
+  (wire (pts (xy 123.825 22.225) (xy 123.825 23.495))
     (stroke (width 0) (type default))
     (uuid d7beffa1-d912-466c-9e22-0085b45fa1ba)
   )
@@ -3007,10 +2907,6 @@
   (wire (pts (xy 52.07 170.18) (xy 62.23 170.18))
     (stroke (width 0) (type default))
     (uuid dc8ad6f5-a442-418a-90b8-0b2a26eaf931)
-  )
-  (wire (pts (xy 376.555 130.81) (xy 379.73 130.81))
-    (stroke (width 0) (type default))
-    (uuid df00cb76-d9d8-4947-8b0f-b3127ae91280)
   )
   (wire (pts (xy 25.4 266.065) (xy 38.1 266.065))
     (stroke (width 0) (type default))
@@ -3031,10 +2927,6 @@
   (wire (pts (xy 26.67 226.695) (xy 34.29 226.695))
     (stroke (width 0) (type default))
     (uuid ea9bf592-ea44-42f8-9f70-7f9edfd6c2dd)
-  )
-  (wire (pts (xy 377.825 28.575) (xy 365.125 28.575))
-    (stroke (width 0) (type default))
-    (uuid eb221314-2487-4833-ac88-3a0fb612d763)
   )
   (wire (pts (xy 251.46 266.7) (xy 251.46 269.24))
     (stroke (width 0) (type default))
@@ -3077,10 +2969,6 @@
     (stroke (width 0) (type default))
     (uuid f631e037-b9f5-47a1-b3ce-5d2e735f7a8b)
   )
-  (wire (pts (xy 376.555 122.555) (xy 379.73 122.555))
-    (stroke (width 0) (type default))
-    (uuid f6991d92-a938-4053-97f1-1fde0aab21c0)
-  )
   (wire (pts (xy 255.27 44.45) (xy 255.27 46.99))
     (stroke (width 0) (type default))
     (uuid f6eecffd-506b-4ff3-8a37-f16bdca13c0d)
@@ -3094,11 +2982,11 @@
     (stroke (width 0) (type default))
     (uuid f76a2adb-8c2e-4088-bbde-63003003fe3c)
   )
-  (wire (pts (xy 240.03 259.08) (xy 241.935 259.08))
+  (wire (pts (xy 88.265 32.385) (xy 102.87 32.385))
     (stroke (width 0) (type default))
-    (uuid fbcc3b92-dc87-4a90-b368-be52444ae4c1)
+    (uuid f87ecd04-57ab-4d62-9b9f-216766b21a6e)
   )
-  (wire (pts (xy 119.38 40.005) (xy 119.38 42.545))
+  (wire (pts (xy 107.95 40.005) (xy 107.95 42.545))
     (stroke (width 0) (type default))
     (uuid ff19aead-30a8-4b43-be53-81615fce8ba1)
   )
@@ -3193,13 +3081,6 @@
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )
-  (global_label "CLOCK_VCC" (shape input) (at 240.03 259.08 180) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify right))
-    (uuid 222a1a64-f7cf-42d5-b133-65610c27ec7c)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 226.3594 259.08 0)
-      (effects (font (size 1.27 1.27)) (justify right) hide)
-    )
-  )
   (global_label "OSC32_OUT" (shape input) (at 192.405 203.2 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 2920dd4c-f925-46d0-8403-6a192a7f769e)
@@ -3212,13 +3093,6 @@
     (uuid 2ef3d84a-ea55-403e-9b2b-104fd775f7a9)
     (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 238.4908 149.86 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
-    )
-  )
-  (global_label "SPI2_LOAD" (shape input) (at 377.825 62.865 180) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify right))
-    (uuid 33e36f5f-82da-491f-a53e-3917f6271d61)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 364.9406 62.865 0)
-      (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )
   (global_label "SPI2_MOSI" (shape input) (at 377.825 26.035 180) (fields_autoplaced)
@@ -3284,10 +3158,10 @@
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )
-  (global_label "SPI2_MISO" (shape input) (at 377.825 90.805 180) (fields_autoplaced)
+  (global_label "SPI2_MISO" (shape input) (at 377.825 28.575 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 65a49edb-e8ce-4c68-b41f-1e1eb211fd91)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 365.0616 90.805 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 365.0616 28.575 0)
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )
@@ -3309,13 +3183,6 @@
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 75a69875-25c1-4036-93f0-0b7eaef43419)
     (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 170.6608 17.78 0)
-      (effects (font (size 1.27 1.27)) (justify right) hide)
-    )
-  )
-  (global_label "SPI2_LOAD" (shape input) (at 377.825 41.275 180) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify right))
-    (uuid 788b71b5-2fae-4372-bbff-9be21c786f7d)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 364.9406 41.275 0)
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )
@@ -3359,13 +3226,6 @@
     (uuid 953b8890-321e-417c-b7f8-d8ed2f4e34d9)
     (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 275.5325 36.83 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
-    )
-  )
-  (global_label "SPI2_CLK" (shape input) (at 377.825 85.725 180) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify right))
-    (uuid 97e92653-594f-4c2d-abb9-f930716ca83d)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 366.0897 85.725 0)
-      (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )
   (global_label "USB_CONN_D+" (shape input) (at 48.26 42.545 0) (fields_autoplaced)
@@ -3417,13 +3277,6 @@
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )
-  (global_label "SPI2_LOAD" (shape input) (at 377.825 83.185 180) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify right))
-    (uuid b03a254d-8d6a-4bad-befc-d42cb79f560d)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 364.9406 83.185 0)
-      (effects (font (size 1.27 1.27)) (justify right) hide)
-    )
-  )
   (global_label "OSC32_IN" (shape input) (at 48.895 242.57 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid b8072b3d-8372-48b3-810a-3021214ab63a)
@@ -3452,13 +3305,6 @@
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
   )
-  (global_label "SPI2_CLK" (shape input) (at 377.825 43.815 180) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify right))
-    (uuid c1020f6c-8ee8-4113-aa90-aede41c5db74)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 366.0897 43.815 0)
-      (effects (font (size 1.27 1.27)) (justify right) hide)
-    )
-  )
   (global_label "I2C1_SCL" (shape input) (at 193.675 271.78 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid c4968b7b-eca1-4794-8751-494b94c2c6c0)
@@ -3484,13 +3330,6 @@
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid ca40574c-36c0-4150-925d-d6e02d90ba18)
     (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 29.0862 114.935 0)
-      (effects (font (size 1.27 1.27)) (justify right) hide)
-    )
-  )
-  (global_label "SPI2_CLK" (shape input) (at 377.825 65.405 180) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify right))
-    (uuid d3b5f91f-48a0-4d6b-9cff-b36653fa128e)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 366.0897 65.405 0)
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )
@@ -3543,13 +3382,6 @@
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )
-  (global_label "CLOCK_VCC" (shape input) (at 283.21 253.365 90) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify left))
-    (uuid f513b7d9-2c73-451e-9ec5-27047fc37a76)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 283.21 239.6944 90)
-      (effects (font (size 1.27 1.27)) (justify left) hide)
-    )
-  )
   (global_label "BUCK_BS" (shape input) (at 292.1 26.035 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid f8052aa8-49f2-4f42-ae21-fe8f74b470b9)
@@ -3575,7 +3407,7 @@
     )
     (pin "1" (uuid ad52f8ea-63ef-4893-9f22-77b4016ae7d7))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0106") (unit 1)
         )
@@ -3600,7 +3432,7 @@
     )
     (pin "1" (uuid cb002ce5-5fac-46ea-8549-75e90264f6d0))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0101") (unit 1)
         )
@@ -3625,7 +3457,7 @@
     )
     (pin "1" (uuid 937e0544-1b52-4844-83e8-e6b46e553100))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0134") (unit 1)
         )
@@ -3650,7 +3482,7 @@
     )
     (pin "1" (uuid d16437fd-4696-4030-a9b4-61976a4259f6))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0113") (unit 1)
         )
@@ -3675,7 +3507,7 @@
     )
     (pin "1" (uuid 5a9459e3-a3f8-4f8a-8237-d90372889397))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0126") (unit 1)
         )
@@ -3700,7 +3532,7 @@
     )
     (pin "1" (uuid 3fc8310a-4042-43e6-96b3-51769e28f3ec))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0130") (unit 1)
         )
@@ -3725,7 +3557,7 @@
     )
     (pin "1" (uuid c3e50e7c-42f2-44d6-82ad-a58ee7936b8c))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0132") (unit 1)
         )
@@ -3751,7 +3583,7 @@
     (pin "1" (uuid ec88cb83-6bd9-4d2e-b549-1b8feb8c97f0))
     (pin "2" (uuid cbce1bb9-7753-4691-b376-6e1b1e7ff5a2))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "L2") (unit 1)
         )
@@ -3776,7 +3608,7 @@
     )
     (pin "1" (uuid 08a8f468-858d-4b60-a795-26d6b4f09419))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0110") (unit 1)
         )
@@ -3801,7 +3633,7 @@
     )
     (pin "1" (uuid f7c52f31-8cd3-48a4-a79b-3fa3b757f548))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0131") (unit 1)
         )
@@ -3809,49 +3641,24 @@
     )
   )
 
-  (symbol (lib_id "power:GND") (at 376.555 144.145 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 1dfab5d5-4081-4b83-8525-550dfd89a156)
-    (property "Reference" "#PWR0115" (at 376.555 150.495 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 376.555 147.955 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 376.555 144.145 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 376.555 144.145 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 4488a15b-630d-4f39-a00b-ab18b191b0d1))
-    (instances
-      (project "wordclock"
-        (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
-          (reference "#PWR0115") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:+5V") (at 99.695 29.845 0) (unit 1)
+  (symbol (lib_id "power:+5V") (at 88.265 29.845 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1eff41d1-3e02-47b0-b88c-78c1ea67ec82)
-    (property "Reference" "#PWR0133" (at 99.695 33.655 0)
+    (property "Reference" "#PWR0133" (at 88.265 33.655 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "+5V" (at 99.695 26.035 0)
+    (property "Value" "+5V" (at 88.265 26.035 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 99.695 29.845 0)
+    (property "Footprint" "" (at 88.265 29.845 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 99.695 29.845 0)
+    (property "Datasheet" "" (at 88.265 29.845 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid ed8e6ae8-55b1-4ef8-9305-aafdafcb1f4a))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0133") (unit 1)
         )
@@ -3898,7 +3705,7 @@
     (pin "B9" (uuid a408120a-ab11-4196-8a3c-d49b72db9ce7))
     (pin "S1" (uuid 0ea463b6-b3f1-4077-940a-438a70943c91))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "P1") (unit 1)
         )
@@ -3924,7 +3731,7 @@
     (pin "1" (uuid e4935d80-700a-4c6e-b122-dffb67ee97c2))
     (pin "2" (uuid 80cff957-c5ef-4199-a5f0-21cc787aa6bd))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "C4") (unit 1)
         )
@@ -3950,7 +3757,7 @@
     (pin "1" (uuid 2353874e-fa0b-4618-910f-4718b76cba62))
     (pin "2" (uuid e96ed2d4-6907-4f03-9e8b-0af1b1053618))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "L1") (unit 1)
         )
@@ -3976,7 +3783,7 @@
     (pin "1" (uuid 15ca1ca9-f7bd-4ff3-9178-8697991deaa1))
     (pin "2" (uuid f1d3f55f-6814-449b-9061-9e904ea979a6))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "R1") (unit 1)
         )
@@ -4001,7 +3808,7 @@
     )
     (pin "1" (uuid d9160a8a-cc59-46fa-b5f0-7d1700dbf720))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0117") (unit 1)
         )
@@ -4027,7 +3834,7 @@
     (pin "1" (uuid 0e148780-d50a-4091-a41e-ef8e6386d7f0))
     (pin "2" (uuid a5713ae8-7203-42a7-aa36-f8c58670bece))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "C16") (unit 1)
         )
@@ -4035,16 +3842,41 @@
     )
   )
 
-  (symbol (lib_id "Device:R_Small") (at 46.355 249.555 0) (unit 1)
+  (symbol (lib_id "power:+3.3V") (at 283.21 249.555 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 319d7750-07e8-46d8-8faf-fd9cca3ed32f)
+    (property "Reference" "#PWR01" (at 283.21 253.365 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "+3.3V" (at 283.21 245.745 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 283.21 249.555 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 283.21 249.555 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 33b16821-d965-41de-a000-e159ecb06a3a))
+    (instances
+      (project "wordclock-proto-r1"
+        (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
+          (reference "#PWR01") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:R_Small") (at 46.355 249.555 0) (mirror y) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
     (uuid 356fa51b-2f02-4f68-b183-7995688bd397)
-    (property "Reference" "R3" (at 48.26 248.92 0)
+    (property "Reference" "R3" (at 44.45 248.92 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "242k" (at 48.26 251.46 0)
+    (property "Value" "242k" (at 44.45 251.46 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 46.355 249.555 0)
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 46.355 249.555 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 46.355 249.555 0)
@@ -4053,7 +3885,7 @@
     (pin "1" (uuid ef5e165c-ba00-4235-b6de-592399775860))
     (pin "2" (uuid 9118dcb7-8ea1-4855-a91e-885873b1fa7c))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "R3") (unit 1)
         )
@@ -4078,7 +3910,7 @@
     )
     (pin "1" (uuid 74ce827b-7ec6-48ff-a539-3e57292a1e8c))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0109") (unit 1)
         )
@@ -4106,7 +3938,7 @@
     (pin "3" (uuid 556054d0-1284-4b4e-bc1d-98f58ca1902b))
     (pin "4" (uuid ea175388-6559-439c-8087-33e27521dff8))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "Y2") (unit 1)
         )
@@ -4133,7 +3965,7 @@
     (pin "2" (uuid 24740b98-e1d3-4bd2-8682-a9da3e392329))
     (pin "3" (uuid fe58bc9b-c441-4d4c-a993-a50266bfa3d7))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "SW1") (unit 1)
         )
@@ -4159,7 +3991,7 @@
     (pin "1" (uuid cdea6f9f-f00b-4b38-902b-5312cdb195ec))
     (pin "2" (uuid 41778a51-9ccf-4d0c-a9a3-f3cc6b6d8c18))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "C7") (unit 1)
         )
@@ -4185,7 +4017,7 @@
     (pin "1" (uuid 33681fd7-f96d-495f-9f37-ec8da27f1107))
     (pin "2" (uuid 89e8e790-239a-483f-b09c-d58feaf1e7c7))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "C5") (unit 1)
         )
@@ -4210,7 +4042,7 @@
     )
     (pin "1" (uuid 6ed1729d-638f-415c-82d6-fcaf69554baa))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0137") (unit 1)
         )
@@ -4235,7 +4067,7 @@
     )
     (pin "1" (uuid a4134586-9290-4d24-ae3c-4680c1aa703a))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0125") (unit 1)
         )
@@ -4261,7 +4093,7 @@
     (pin "1" (uuid 42801b22-2d4c-4e5a-a874-93f03c0e1d63))
     (pin "2" (uuid a9d4a1a5-d20b-45b9-9330-24c76042a45f))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "C14") (unit 1)
         )
@@ -4287,7 +4119,7 @@
     (pin "1" (uuid db37fda2-d6ec-41f5-b8d4-bbd6979c8351))
     (pin "2" (uuid 007b8a11-3d73-4c14-acaa-b93d00ba6eaf))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "C15") (unit 1)
         )
@@ -4312,7 +4144,7 @@
     )
     (pin "1" (uuid 78568ff6-afd6-41f1-b718-a8db30e528a9))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0111") (unit 1)
         )
@@ -4320,25 +4152,25 @@
     )
   )
 
-  (symbol (lib_id "Device:Polyfuse") (at 106.045 32.385 90) (unit 1)
+  (symbol (lib_id "Device:Polyfuse") (at 133.35 32.385 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 53c3513d-b699-454a-8dc0-045323c1ab0f)
-    (property "Reference" "F1" (at 106.045 26.67 90)
+    (property "Reference" "F1" (at 133.35 26.67 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Value" "1A" (at 106.045 29.21 90)
+    (property "Value" "1A" (at 133.35 29.21 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Fuse:Fuse_1206_3216Metric" (at 111.125 31.115 0)
+    (property "Footprint" "Fuse:Fuse_1206_3216Metric" (at 138.43 31.115 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
-    (property "Datasheet" "~" (at 106.045 32.385 0)
+    (property "Datasheet" "~" (at 133.35 32.385 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid ac4571b8-170f-427c-a682-269321918cff))
     (pin "2" (uuid 4da85d88-e462-42b9-a0ef-0bd86e9e4300))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "F1") (unit 1)
         )
@@ -4364,7 +4196,7 @@
     (pin "1" (uuid a4121afc-6013-4bcf-835a-c336e07d5ebc))
     (pin "2" (uuid 571a07f7-3000-4a6b-9937-ef6044d2840a))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "R7") (unit 1)
         )
@@ -4452,7 +4284,7 @@
     (pin "8" (uuid 5324a380-13b5-446e-baa5-8fdd6a365dde))
     (pin "9" (uuid 6213c196-0dcb-4db4-884d-fba32e4698b7))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "U5") (unit 1)
         )
@@ -4477,7 +4309,7 @@
     )
     (pin "1" (uuid 2ce5fbee-0878-4dee-a849-9c92925ac646))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0105") (unit 1)
         )
@@ -4509,7 +4341,7 @@
     (pin "7" (uuid 787279ed-ce53-4143-825b-a05ffa7274a1))
     (pin "8" (uuid fcaade5c-8cd0-4c14-862a-c32dd07cd6d9))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "U8") (unit 1)
         )
@@ -4541,7 +4373,7 @@
     (pin "7" (uuid d82036ee-ed91-41ad-b262-ecb8c77a548f))
     (pin "8" (uuid 4b78be37-cbd0-4cc9-ae7e-0c0e9bf915e5))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "U9") (unit 1)
         )
@@ -4567,7 +4399,7 @@
     (pin "1" (uuid a4815329-7cba-43ee-8fe5-259e90094232))
     (pin "2" (uuid ced83a2f-ff56-486f-8e1f-eba2e7c3c835))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "C11") (unit 1)
         )
@@ -4592,7 +4424,7 @@
     )
     (pin "1" (uuid 473dc193-b6c7-42c1-ba19-a14214f52683))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0120") (unit 1)
         )
@@ -4609,7 +4441,7 @@
     (property "Value" "20pF" (at 27.94 260.985 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 25.4 260.35 0)
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 25.4 260.35 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 25.4 260.35 0)
@@ -4618,7 +4450,7 @@
     (pin "1" (uuid 9960efea-961a-4f37-8c3b-63bb238f27ea))
     (pin "2" (uuid 77c58a34-a05e-498e-9eb4-066454434938))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "C2") (unit 1)
         )
@@ -4646,7 +4478,7 @@
     (pin "3" (uuid d9d8912b-913c-4ed5-b24a-bab4747acd1a))
     (pin "4" (uuid cd60c62b-6529-4a7e-b104-7cd645d5f7e2))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "Y1") (unit 1)
         )
@@ -4671,7 +4503,7 @@
     )
     (pin "1" (uuid 27bd9997-2171-4540-b245-3c9037ad4128))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0128") (unit 1)
         )
@@ -4696,7 +4528,7 @@
     )
     (pin "1" (uuid 00dc3b91-acf1-4689-ab47-d442cf7c2755))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0112") (unit 1)
         )
@@ -4721,7 +4553,7 @@
     )
     (pin "1" (uuid 750fd5a9-c2e2-4d21-afc2-8fb9cd5ba066))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0114") (unit 1)
         )
@@ -4747,7 +4579,7 @@
     (pin "1" (uuid 19090e2a-6e8f-4e25-9951-56482bf8d5c0))
     (pin "2" (uuid dce0d2af-aa9b-49f9-b091-c941d11a3730))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "R8") (unit 1)
         )
@@ -4772,7 +4604,7 @@
     )
     (pin "1" (uuid c5a82c35-6b03-4a04-84c3-a555f9e1a6d2))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0107") (unit 1)
         )
@@ -4789,7 +4621,7 @@
     (property "Value" "12pF" (at 28.575 222.25 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 26.67 221.615 0)
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 26.67 221.615 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 26.67 221.615 0)
@@ -4798,7 +4630,7 @@
     (pin "1" (uuid baff7854-70bc-4775-85b3-5a8407c6d178))
     (pin "2" (uuid 2abdb4e7-467d-4ad6-8517-2ae9991127ae))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "C3") (unit 1)
         )
@@ -4824,7 +4656,7 @@
     (pin "1" (uuid 4620ba39-951a-4f92-a3aa-6f6e17c55e50))
     (pin "2" (uuid bf1314b2-4fc0-4064-aeea-278e5bb9f673))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "R4") (unit 1)
         )
@@ -4849,7 +4681,7 @@
     )
     (pin "1" (uuid 17755989-eeb9-441f-af7c-ebef26e2a8f3))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0127") (unit 1)
         )
@@ -4874,7 +4706,7 @@
     )
     (pin "1" (uuid 51ce4e26-7e5a-4775-9472-cbd035d734f1))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0129") (unit 1)
         )
@@ -4904,7 +4736,7 @@
     (pin "5" (uuid ae435627-9623-45d9-b246-e133657a1f09))
     (pin "6" (uuid ebe66059-3f20-4ec9-80bb-73a68b8c66b9))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "J1") (unit 1)
         )
@@ -4930,7 +4762,7 @@
     (pin "1" (uuid e53046ac-bfba-4cde-8538-444aff0f0e65))
     (pin "2" (uuid 48dca870-ad8d-40f6-ae9f-90cd746ac152))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "C17") (unit 1)
         )
@@ -4956,7 +4788,7 @@
     (pin "1" (uuid 40ea4f61-853f-4b16-9cff-33f8633617d4))
     (pin "2" (uuid 51fde31f-ed8f-4ab0-ae98-bd93bbbdb0fb))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "C12") (unit 1)
         )
@@ -4981,7 +4813,7 @@
     )
     (pin "1" (uuid db42a986-687c-4989-a2e7-2b20a4e637c0))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0122") (unit 1)
         )
@@ -5007,7 +4839,7 @@
     (pin "1" (uuid d7c84649-8281-496d-85a4-b2af95b75928))
     (pin "2" (uuid c93ead5e-b3c0-43f8-8073-2670ce6e9bae))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "C10") (unit 1)
         )
@@ -5033,34 +4865,9 @@
     (pin "1" (uuid 9c13f363-46cd-409c-ab1a-75a902d25691))
     (pin "2" (uuid a3694771-336c-4c44-9f6e-11c743cd9908))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "C1") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Mechanical:MountingHole_Pad") (at 382.27 139.065 270) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 9b390baa-1745-4ac1-8032-3952877d5cf5)
-    (property "Reference" "H4" (at 386.08 138.43 90)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "MountingHole_Pad" (at 386.08 140.97 90)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "MountingHole:MountingHole_4.3mm_M4_Pad_Via" (at 382.27 139.065 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 382.27 139.065 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 175c838a-ad38-4154-aa67-5a147616f0c7))
-    (instances
-      (project "wordclock"
-        (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
-          (reference "H4") (unit 1)
         )
       )
     )
@@ -5088,7 +4895,7 @@
     (pin "5" (uuid 4b452b8a-d834-4f37-b4ae-5d8542ab9d2a))
     (pin "6" (uuid 40b5e517-d73b-4509-bb3b-460d8e336c8f))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "U7") (unit 1)
         )
@@ -5114,7 +4921,7 @@
     (pin "1" (uuid 49c03a3b-8b27-42fb-95e8-79597e9a4ea0))
     (pin "2" (uuid 95971abc-431f-4bce-9f8b-5073784a4a8a))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "R6") (unit 1)
         )
@@ -5139,7 +4946,7 @@
     )
     (pin "1" (uuid 33ad4d57-b079-4d70-a39a-f1c0aa0a8cb1))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0116") (unit 1)
         )
@@ -5165,7 +4972,7 @@
     (pin "1" (uuid f600ceff-ee3b-433a-97f5-647ba22dfac3))
     (pin "2" (uuid aa4c28cd-2216-4354-8f4a-4fab760962af))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "BT1") (unit 1)
         )
@@ -5191,7 +4998,7 @@
     (pin "1" (uuid 92ae3dbd-6eb1-4644-8fe3-6f5754770e67))
     (pin "2" (uuid 716a30cc-07f0-4956-af39-1b7ab6dff554))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "FB1") (unit 1)
         )
@@ -5216,7 +5023,7 @@
     )
     (pin "1" (uuid 2e6972dc-f884-43a7-bccd-8daca2e0175c))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0103") (unit 1)
         )
@@ -5242,7 +5049,7 @@
     (pin "1" (uuid 37088cf4-6b03-4cf4-aed3-b2bb33c04cad))
     (pin "2" (uuid 91283e7f-15e6-4949-b928-321a44fbd9db))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "R12") (unit 1)
         )
@@ -5250,25 +5057,25 @@
     )
   )
 
-  (symbol (lib_id "Device:D_Shockley") (at 135.255 27.305 90) (unit 1)
+  (symbol (lib_id "Device:D_Shockley") (at 123.825 27.305 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b0fc4780-5457-4853-9a67-6ec7bd97fe40)
-    (property "Reference" "D501" (at 134.62 24.765 90)
+    (property "Reference" "D501" (at 123.19 24.765 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "SHCK" (at 146.05 24.13 90)
+    (property "Value" "SHCK" (at 126.365 29.845 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Diode_SMD:D_SOD-123" (at 135.255 27.305 0)
+    (property "Footprint" "Diode_SMD:D_SOD-123" (at 123.825 27.305 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "~" (at 135.255 27.305 0)
+    (property "Datasheet" "~" (at 123.825 27.305 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 7b46b006-6b67-4537-b139-a56b21e1f6ef))
     (pin "2" (uuid 5b6d1cc5-edfe-465a-a00f-2baade95d569))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "D501") (unit 1)
         )
@@ -5294,7 +5101,7 @@
     (pin "1" (uuid 5646b0ff-ac45-4394-a5f6-4f76a9b6da7b))
     (pin "2" (uuid e6afa64d-7919-45e7-9c87-899db43c4a5e))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "R5") (unit 1)
         )
@@ -5320,7 +5127,7 @@
     (pin "1" (uuid a8c80e2f-93e5-4312-bd37-7931aae839dd))
     (pin "2" (uuid 5e3c17e0-5b0d-42c6-bf30-f0e7e7ddf943))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "R11") (unit 1)
         )
@@ -5345,7 +5152,7 @@
     )
     (pin "1" (uuid 7f423f3b-2977-4b2d-9976-dbcf587fb46b))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0124") (unit 1)
         )
@@ -5370,7 +5177,7 @@
     )
     (pin "1" (uuid 3b130824-5376-43fc-a92f-fb3178899636))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0121") (unit 1)
         )
@@ -5378,24 +5185,24 @@
     )
   )
 
-  (symbol (lib_id "power:+5V") (at 135.255 22.225 0) (unit 1)
+  (symbol (lib_id "power:+5V") (at 123.825 22.225 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid bf6390c2-dca5-4264-b7eb-0c96dd9d892e)
-    (property "Reference" "#PWR0135" (at 135.255 26.035 0)
+    (property "Reference" "#PWR0135" (at 123.825 26.035 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "+5V" (at 135.255 18.415 0)
+    (property "Value" "+5V" (at 123.825 18.415 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 135.255 22.225 0)
+    (property "Footprint" "" (at 123.825 22.225 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 135.255 22.225 0)
+    (property "Datasheet" "" (at 123.825 22.225 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 7443fbb0-12f0-4c4a-86d1-7b4070d56190))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0135") (unit 1)
         )
@@ -5420,7 +5227,7 @@
     )
     (pin "1" (uuid d4cc306b-60f6-45e8-bb25-d893427b68a0))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0118") (unit 1)
         )
@@ -5445,7 +5252,7 @@
     )
     (pin "1" (uuid af338a81-0c02-4727-8b52-6606f4d821d2))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0108") (unit 1)
         )
@@ -5471,7 +5278,7 @@
     (pin "1" (uuid b5727ffa-01d1-40c5-b1e6-509254239130))
     (pin "2" (uuid c6fda043-629b-414c-9666-b2781b2a3d04))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "R9") (unit 1)
         )
@@ -5488,7 +5295,7 @@
     (property "Value" "20pF" (at 48.895 261.62 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 46.355 260.35 0)
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 46.355 260.35 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 46.355 260.35 0)
@@ -5497,7 +5304,7 @@
     (pin "1" (uuid 77dfa8a9-e9c6-4d3c-9092-b1fa3f720a3d))
     (pin "2" (uuid 99af4f90-3528-40b1-b094-28bffeb22178))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "C9") (unit 1)
         )
@@ -5523,7 +5330,7 @@
     (pin "1" (uuid 12d4351b-c8ac-47fd-89ff-645d01ea9fd9))
     (pin "2" (uuid 89139009-4278-4716-941c-9452c72a0580))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "R2") (unit 1)
         )
@@ -5531,26 +5338,26 @@
     )
   )
 
-  (symbol (lib_id "Transistor_FET:AO3401A") (at 119.38 34.925 90) (unit 1)
+  (symbol (lib_id "Transistor_FET:AO3401A") (at 107.95 34.925 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid ca7493b7-c1b6-423e-88cb-b93c5cdf2bf4)
-    (property "Reference" "Q1" (at 119.38 26.67 90)
+    (property "Reference" "Q1" (at 107.95 26.67 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Value" "AO3401A" (at 119.38 29.21 90)
+    (property "Value" "AO3401A" (at 107.95 29.21 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 121.285 29.845 0)
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 109.855 29.845 0)
       (effects (font (size 1.27 1.27) italic) (justify left) hide)
     )
-    (property "Datasheet" "http://www.aosmd.com/pdfs/datasheet/AO3401A.pdf" (at 119.38 34.925 0)
+    (property "Datasheet" "http://www.aosmd.com/pdfs/datasheet/AO3401A.pdf" (at 107.95 34.925 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
     (pin "1" (uuid 7ecc7090-af47-4e68-8a8d-30d0599540a3))
     (pin "2" (uuid 4152cf41-e94d-489e-86f1-65279cfdfd2a))
     (pin "3" (uuid 7ebeb733-9926-498f-b0a9-833758af9a91))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "Q1") (unit 1)
         )
@@ -5576,7 +5383,7 @@
     (pin "1" (uuid 6c4328b7-2666-4c82-af56-1c74a03342ba))
     (pin "2" (uuid 0850c9e4-ede2-49d2-8e95-4f876679a4d1))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "C6") (unit 1)
         )
@@ -5584,24 +5391,24 @@
     )
   )
 
-  (symbol (lib_id "power:GND") (at 119.38 42.545 0) (unit 1)
+  (symbol (lib_id "power:GND") (at 107.95 42.545 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ce6ee880-ef1c-4406-9ee4-65913498e0f3)
-    (property "Reference" "#PWR0138" (at 119.38 48.895 0)
+    (property "Reference" "#PWR0138" (at 107.95 48.895 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "GND" (at 119.38 46.355 0)
+    (property "Value" "GND" (at 107.95 46.355 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 119.38 42.545 0)
+    (property "Footprint" "" (at 107.95 42.545 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 119.38 42.545 0)
+    (property "Datasheet" "" (at 107.95 42.545 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 473fb2d1-2ba3-4a6e-89fb-31d7d25e2706))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0138") (unit 1)
         )
@@ -5627,34 +5434,9 @@
     (pin "1" (uuid ff6cefa7-ec7a-4908-ad5d-28165901f5bd))
     (pin "2" (uuid c0f6d5a1-fb82-41b9-8b79-3ca29a460afb))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "D500") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Mechanical:MountingHole_Pad") (at 382.27 130.81 270) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid cf5ecdd4-a90a-4b02-801d-4692c49b548c)
-    (property "Reference" "H3" (at 386.08 130.175 90)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "MountingHole_Pad" (at 386.08 132.715 90)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "MountingHole:MountingHole_4.3mm_M4_Pad_Via" (at 382.27 130.81 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 382.27 130.81 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid f89847a7-ad49-4ea9-a00c-40861f764914))
-    (instances
-      (project "wordclock"
-        (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
-          (reference "H3") (unit 1)
         )
       )
     )
@@ -5677,7 +5459,7 @@
     )
     (pin "1" (uuid 64535931-d6ce-4657-9583-cbbffcdbf003))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0123") (unit 1)
         )
@@ -5707,34 +5489,9 @@
     (pin "5" (uuid ee189473-db9c-4ee7-9c51-495c8607a9fc))
     (pin "6" (uuid 96399832-4923-4b79-a8c9-8860cc453327))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "U6") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Mechanical:MountingHole_Pad") (at 382.27 114.935 270) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid d8e26bb0-ee68-4c04-8c3a-fa3f0ca6d2ce)
-    (property "Reference" "H1" (at 386.08 114.3 90)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "MountingHole_Pad" (at 386.08 116.84 90)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "MountingHole:MountingHole_4.3mm_M4_Pad_Via" (at 382.27 114.935 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 382.27 114.935 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid b393b7d8-82d1-4cf4-8f2b-56155d2ef08d))
-    (instances
-      (project "wordclock"
-        (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
-          (reference "H1") (unit 1)
         )
       )
     )
@@ -5757,7 +5514,7 @@
     )
     (pin "1" (uuid 20619e46-c13d-4c79-ac68-4b38349f05fb))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0136") (unit 1)
         )
@@ -5783,7 +5540,7 @@
     (pin "1" (uuid 2e59f72d-4687-4dcc-bfc1-e82a163aaa18))
     (pin "2" (uuid f35951bf-37fb-4636-acdf-c2d9b6c5987e))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "R10") (unit 1)
         )
@@ -5808,7 +5565,7 @@
     )
     (pin "1" (uuid 80b045e8-6684-4d32-922a-1ae5ed149a3c))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0104") (unit 1)
         )
@@ -5834,7 +5591,7 @@
     (pin "1" (uuid d08d3fbb-dc1a-4714-8b49-03c8b652aa5c))
     (pin "2" (uuid 39ff4d15-87d9-4167-b160-2bf687ad76fd))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "C18") (unit 1)
         )
@@ -5860,34 +5617,9 @@
     (pin "1" (uuid ebe1ff4a-a4a6-4d99-a09f-8fc2d3af7254))
     (pin "2" (uuid 51198287-c9a7-4139-b428-b83ec3b481c2))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "C13") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Mechanical:MountingHole_Pad") (at 382.27 122.555 270) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid efea675a-2b5d-487a-aa64-7fa098724698)
-    (property "Reference" "H2" (at 386.08 121.92 90)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "MountingHole_Pad" (at 386.08 124.46 90)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "MountingHole:MountingHole_4.3mm_M4_Pad_Via" (at 382.27 122.555 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 382.27 122.555 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 4b5dcf97-ebf0-4cb6-9f43-df22140a2cc6))
-    (instances
-      (project "wordclock"
-        (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
-          (reference "H2") (unit 1)
         )
       )
     )
@@ -5910,7 +5642,7 @@
     )
     (pin "1" (uuid 2fd4918e-57a6-4011-a743-4b5da581b486))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0119") (unit 1)
         )
@@ -5935,7 +5667,7 @@
     )
     (pin "1" (uuid 83eb47c0-c53a-472a-8c82-2dba17e99122))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0102") (unit 1)
         )
@@ -5952,7 +5684,7 @@
     (property "Value" "12pF" (at 43.815 222.885 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 41.91 221.615 0)
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 41.91 221.615 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 41.91 221.615 0)
@@ -5961,7 +5693,7 @@
     (pin "1" (uuid 1a86183c-6c97-404e-96da-d8de0881e2bb))
     (pin "2" (uuid 2d858cd1-a86b-4207-b906-b4aea44af26d))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "C8") (unit 1)
         )
@@ -5986,76 +5718,10 @@
     )
     (pin "1" (uuid e27b452b-be05-4da6-b647-9ea439953064))
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1"
           (reference "#PWR0139") (unit 1)
         )
-      )
-    )
-  )
-
-  (sheet (at 377.825 38.735) (size 26.67 12.7) (fields_autoplaced)
-    (stroke (width 0.1524) (type solid))
-    (fill (color 0 0 0 0.0000))
-    (uuid 0c0c03bc-544d-4b35-8963-94459c61ffb3)
-    (property "Sheetname" "Led Array 2" (at 377.825 38.0234 0)
-      (effects (font (size 1.27 1.27)) (justify left bottom))
-    )
-    (property "Sheetfile" "led_array.kicad_sch" (at 377.825 52.0196 0)
-      (effects (font (size 1.27 1.27)) (justify left top))
-    )
-    (pin "LOAD" input (at 377.825 41.275 180)
-      (effects (font (size 1.27 1.27)) (justify left))
-      (uuid a1f360f4-20b5-44a2-8648-6aa6c83c3792)
-    )
-    (pin "CLK" input (at 377.825 43.815 180)
-      (effects (font (size 1.27 1.27)) (justify left))
-      (uuid e4d83fd5-dcf8-4682-96b3-62a85514677f)
-    )
-    (pin "MOSI" input (at 377.825 46.355 180)
-      (effects (font (size 1.27 1.27)) (justify left))
-      (uuid 44ec3df7-84c5-45df-9eab-d2c97fdd45c7)
-    )
-    (pin "MISO" input (at 377.825 48.895 180)
-      (effects (font (size 1.27 1.27)) (justify left))
-      (uuid 302279f7-3236-49e9-a8e2-7b6b23d85df3)
-    )
-    (instances
-      (project "wordclock"
-        (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1" (page "3"))
-      )
-    )
-  )
-
-  (sheet (at 377.825 80.645) (size 26.67 12.7) (fields_autoplaced)
-    (stroke (width 0.1524) (type solid))
-    (fill (color 0 0 0 0.0000))
-    (uuid a8e851d8-618e-418d-98b7-321e284801c1)
-    (property "Sheetname" "Led Array 4" (at 377.825 79.9334 0)
-      (effects (font (size 1.27 1.27)) (justify left bottom))
-    )
-    (property "Sheetfile" "led_array.kicad_sch" (at 377.825 93.9296 0)
-      (effects (font (size 1.27 1.27)) (justify left top))
-    )
-    (pin "LOAD" input (at 377.825 83.185 180)
-      (effects (font (size 1.27 1.27)) (justify left))
-      (uuid 74ebae16-380f-4ffc-a5f8-8bdde5600943)
-    )
-    (pin "CLK" input (at 377.825 85.725 180)
-      (effects (font (size 1.27 1.27)) (justify left))
-      (uuid aae73d08-7a79-4518-87e7-c7d62c1b43b9)
-    )
-    (pin "MOSI" input (at 377.825 88.265 180)
-      (effects (font (size 1.27 1.27)) (justify left))
-      (uuid 6f3f2e00-1b58-44a5-a302-7f8252380085)
-    )
-    (pin "MISO" input (at 377.825 90.805 180)
-      (effects (font (size 1.27 1.27)) (justify left))
-      (uuid 15b30c10-f498-4e98-8638-0713e2ac4086)
-    )
-    (instances
-      (project "wordclock"
-        (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1" (page "5"))
       )
     )
   )
@@ -6087,41 +5753,8 @@
       (uuid a2f824af-7c3f-4476-ad80-fc88b6031424)
     )
     (instances
-      (project "wordclock"
+      (project "wordclock-proto-r1"
         (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1" (page "2"))
-      )
-    )
-  )
-
-  (sheet (at 377.825 60.325) (size 26.67 12.7) (fields_autoplaced)
-    (stroke (width 0.1524) (type solid))
-    (fill (color 0 0 0 0.0000))
-    (uuid d543195c-3059-47ce-9fde-7b51ccc019ad)
-    (property "Sheetname" "Led Array 3" (at 377.825 59.6134 0)
-      (effects (font (size 1.27 1.27)) (justify left bottom))
-    )
-    (property "Sheetfile" "led_array.kicad_sch" (at 377.825 73.6096 0)
-      (effects (font (size 1.27 1.27)) (justify left top))
-    )
-    (pin "LOAD" input (at 377.825 62.865 180)
-      (effects (font (size 1.27 1.27)) (justify left))
-      (uuid abe1d43f-8d22-4d51-8393-e56dc005bc85)
-    )
-    (pin "CLK" input (at 377.825 65.405 180)
-      (effects (font (size 1.27 1.27)) (justify left))
-      (uuid eb36850b-4a7b-4921-81d3-fbbf88179d0e)
-    )
-    (pin "MOSI" input (at 377.825 67.945 180)
-      (effects (font (size 1.27 1.27)) (justify left))
-      (uuid 97cd907b-bdc7-44d8-83dc-d5996b61c526)
-    )
-    (pin "MISO" input (at 377.825 70.485 180)
-      (effects (font (size 1.27 1.27)) (justify left))
-      (uuid 49c20d26-fc36-40ba-bb3c-fc5b2cd01f60)
-    )
-    (instances
-      (project "wordclock"
-        (path "/4f94f353-fcb1-446a-8ea4-44fbed72b7d1" (page "4"))
       )
     )
   )
