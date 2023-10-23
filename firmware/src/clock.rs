@@ -39,7 +39,7 @@ pub struct Clock {
         DS3231,
     >,
     pub(crate) delay: Delay,
-    pub(crate) mode: Box<dyn TimeMode>,
+    pub(crate) mode: Box<dyn TimeMode + Send>,
 }
 
 impl Clock {

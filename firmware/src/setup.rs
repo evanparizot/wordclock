@@ -7,7 +7,7 @@ static ALLOCATOR: CortexMHeap = CortexMHeap::empty();
 
 use alloc::boxed::Box;
 use ds323x::Ds323x;
-use hal::{delay::Delay, i2c::I2c, prelude::*, spi::Spi};
+use hal::{delay::Delay, i2c::I2c, prelude::*, spi::Spi, pac::{Interrupt}, gpio::{Gpioa, Input, U, Pin}};
 use max7219::MAX7219;
 
 pub use cortex_m::{asm::bkpt, iprint, iprintln, peripheral::ITM};
@@ -19,8 +19,11 @@ use crate::{clock::Clock, times::TimeMode};
 pub fn init(
     cp: cortex_m::Peripherals,
     dp: hal::pac::Peripherals,
-    mode: Box<dyn TimeMode>,
-) -> Clock {
+    mode: Box<dyn TimeMode + Send>,
+) -> (
+    Clock, 
+    Pin<Gpioa, U<0>, Input>
+) {
 
     let mut flash = dp.FLASH.constrain();
     let mut rcc = dp.RCC.constrain();
@@ -36,6 +39,19 @@ pub fn init(
         .freeze(&mut flash.acr);
 
     let delay = Delay::new(cp.SYST, clocks);
+
+
+    //  /$$$$$$$  /$$   /$$ /$$$$$$$$ /$$$$$$$$ /$$$$$$  /$$   /$$  /$$$$$$ 
+    // | $$__  $$| $$  | $$|__  $$__/|__  $$__//$$__  $$| $$$ | $$ /$$__  $$
+    // | $$  \ $$| $$  | $$   | $$      | $$  | $$  \ $$| $$$$| $$| $$  \__/
+    // | $$$$$$$ | $$  | $$   | $$      | $$  | $$  | $$| $$ $$ $$|  $$$$$$ 
+    // | $$__  $$| $$  | $$   | $$      | $$  | $$  | $$| $$  $$$$ \____  $$
+    // | $$  \ $$| $$  | $$   | $$      | $$  | $$  | $$| $$\  $$$ /$$  \ $$
+    // | $$$$$$$/|  $$$$$$/   | $$      | $$  |  $$$$$$/| $$ \  $$|  $$$$$$/
+    // |_______/  \______/    |__/      |__/   \______/ |__/  \__/ \______/ 
+
+    let mut button = gpioa.pa0.into_pull_up_input(&mut gpioa.moder, &mut gpioa.pupdr);
+
 
     //  /$$$$$$  /$$$$$$   /$$$$$$
     // |_  $$_/ /$$__  $$ /$$__  $$
@@ -102,10 +118,11 @@ pub fn init(
         display.set_intensity(a, 5).unwrap();
     }
 
-    Clock {
+
+    (Clock {
         display: display,
         clock: rtc,
         delay: delay,
         mode: mode,
-    }
+    }, button)
 }
