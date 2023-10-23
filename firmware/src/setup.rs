@@ -15,18 +15,17 @@ pub use cortex_m_rt::entry;
 
 use crate::{clock::Clock, times::TimeMode};
 
-// const HEAP_SIZE: usize = 1024;
 
 pub fn init(
     cp: cortex_m::Peripherals,
     dp: hal::pac::Peripherals,
     mode: Box<dyn TimeMode>,
 ) -> Clock {
-    // unsafe { ALLOCATOR.init(cortex_m_rt::heap_start() as usize, HEAP_SIZE) }
 
     let mut flash = dp.FLASH.constrain();
     let mut rcc = dp.RCC.constrain();
 
+    let mut gpioa = dp.GPIOA.split(&mut rcc.ahb);
     let mut gpiob = dp.GPIOB.split(&mut rcc.ahb);
 
     let clocks = rcc
@@ -100,7 +99,7 @@ pub fn init(
     display.power_on().unwrap();
     for a in 0..displays {
         display.clear_display(a).unwrap();
-        display.set_intensity(a, 8).unwrap();
+        display.set_intensity(a, 5).unwrap();
     }
 
     Clock {

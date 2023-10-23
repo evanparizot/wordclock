@@ -1,5 +1,11 @@
 # Overview
 
+## Linux Usage
+
+1. Run `./ocd.sh`
+1. Run `cargo build`
+1. Run `cargo run`
+
 
 ## Install Rust build target
 
@@ -15,6 +21,8 @@ cargo build
 ## Start OpenOCD
 ```
 openocd -s C:\OpenOCD\share\scripts -f interface/stlink-v2-1.cfg -f target/stm32f3x.cfg
+
+openocd -f interface/stlink-v2-1.cfg -f target/stm32f3x.cfg
 ```
 
 ## Flashing Chip

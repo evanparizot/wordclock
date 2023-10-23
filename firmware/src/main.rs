@@ -1,4 +1,4 @@
-// #![deny(unsafe_code)]
+#![deny(unsafe_code)]
 #![no_main]
 #![no_std]
 
@@ -46,12 +46,3 @@ mod app {
         }
     }
 }
-
-// #[entry]
-// fn main() -> ! {
-//     let mut clock = init::init(Box::new(AdrianMorgan {}));
-
-//     loop {
-//         clock.update_display_time();
-//     }
-// }
