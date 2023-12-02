@@ -14,7 +14,7 @@ mod times;
 #[rtic::app(device = hal::pac, peripherals = true)]
 mod app {
     use cortex_m_semihosting::hprintln;
-    use hal::gpio::{PA0, PA2, Input};
+    use hal::gpio::{PA0, PA2, Input, PB2, PB3};
     use alloc::boxed::Box;
 
     use crate::{clock::Clock, config::am::AdrianMorgan};
@@ -27,7 +27,7 @@ mod app {
     #[local]
     struct Local {
         hour_button: PA0<Input>,
-        minute_button: PA2<Input>
+        minute_button: PB3<Input>
     }
 
     #[init]
@@ -55,6 +55,7 @@ mod app {
         }
     }
 
+    // https://docs.rs/stm32f3xx-hal/latest/stm32f3xx_hal/enum.interrupt.html
     #[task(binds = EXTI0, local = [hour_button], shared = [clock])]
     fn update_hour(ctx: update_hour::Context) {
         ctx.local.hour_button.clear_interrupt();
@@ -66,13 +67,13 @@ mod app {
         });
     }
 
-    #[task(binds = EXTI0, local = [minute_button], shared = [clock])]
-    fn update_minutes(ctx: update_minute::Context) {
+    #[task(binds = EXTI3, local = [minute_button], shared = [clock])]
+    fn update_minutes(ctx: update_minutes::Context) {
         ctx.local.minute_button.clear_interrupt();
 
         let mut clock = ctx.shared.clock;
         clock.lock(|clock| {
-            hprintln!("Add hours(s)");
+            hprintln!("Add minutes(s)");
             clock.add_minutes(1);
         });
     }

@@ -8,6 +8,7 @@ static ALLOCATOR: CortexMHeap = CortexMHeap::empty();
 use alloc::boxed::Box;
 use ds323x::Ds323x;
 use hal::{delay::Delay, i2c::I2c, prelude::*, spi::Spi, gpio::{Gpioa, Input, U, Pin, Edge}};
+use hal::gpio::Gpiob;
 use max7219::MAX7219;
 use crate::{clock::Clock, times::TimeMode};
 
@@ -19,7 +20,7 @@ pub fn init(
 ) -> (
     Clock, 
     Pin<Gpioa, U<0>, Input>,
-    Pin<Gpioa, U<2>, Input>,
+    Pin<Gpiob, U<3>, Input>,
 ) {
 
     let mut flash = dp.FLASH.constrain();
@@ -56,7 +57,7 @@ pub fn init(
     hour_button.trigger_on_edge(&mut exti, Edge::Rising);
     hour_button.enable_interrupt(&mut exti);
 
-    let mut minute_button = gpioa.pa2.into_pull_up_input(&mut gpioa.moder, &mut gpioa.pupdr);
+    let mut minute_button = gpiob.pb3.into_pull_up_input(&mut gpiob.moder, &mut gpiob.pupdr);
     syscfg.select_exti_interrupt_source(&minute_button);
     minute_button.trigger_on_edge(&mut exti, Edge::Rising);
     minute_button.enable_interrupt(&mut exti);
