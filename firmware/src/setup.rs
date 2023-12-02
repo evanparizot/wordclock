@@ -7,26 +7,28 @@ static ALLOCATOR: CortexMHeap = CortexMHeap::empty();
 
 use alloc::boxed::Box;
 use ds323x::Ds323x;
-use hal::{delay::Delay, i2c::I2c, prelude::*, spi::Spi};
+use hal::{delay::Delay, i2c::I2c, prelude::*, spi::Spi, gpio::{Gpioa, Input, U, Pin, Edge}};
+use hal::gpio::Gpiob;
 use max7219::MAX7219;
-
-pub use cortex_m::{asm::bkpt, iprint, iprintln, peripheral::ITM};
-pub use cortex_m_rt::entry;
-
 use crate::{clock::Clock, times::TimeMode};
 
-// const HEAP_SIZE: usize = 1024;
 
 pub fn init(
     cp: cortex_m::Peripherals,
     dp: hal::pac::Peripherals,
-    mode: Box<dyn TimeMode>,
-) -> Clock {
-    // unsafe { ALLOCATOR.init(cortex_m_rt::heap_start() as usize, HEAP_SIZE) }
+    mode: Box<dyn TimeMode + Send>,
+) -> (
+    Clock, 
+    Pin<Gpioa, U<0>, Input>,
+    Pin<Gpiob, U<3>, Input>,
+) {
 
     let mut flash = dp.FLASH.constrain();
     let mut rcc = dp.RCC.constrain();
+    let mut syscfg = dp.SYSCFG.constrain(&mut rcc.apb2);
+    let mut exti = dp.EXTI;
 
+    let mut gpioa = dp.GPIOA.split(&mut rcc.ahb);
     let mut gpiob = dp.GPIOB.split(&mut rcc.ahb);
 
     let clocks = rcc
@@ -37,6 +39,29 @@ pub fn init(
         .freeze(&mut flash.acr);
 
     let delay = Delay::new(cp.SYST, clocks);
+
+
+    //  /$$$$$$$  /$$   /$$ /$$$$$$$$ /$$$$$$$$ /$$$$$$  /$$   /$$  /$$$$$$ 
+    // | $$__  $$| $$  | $$|__  $$__/|__  $$__//$$__  $$| $$$ | $$ /$$__  $$
+    // | $$  \ $$| $$  | $$   | $$      | $$  | $$  \ $$| $$$$| $$| $$  \__/
+    // | $$$$$$$ | $$  | $$   | $$      | $$  | $$  | $$| $$ $$ $$|  $$$$$$ 
+    // | $$__  $$| $$  | $$   | $$      | $$  | $$  | $$| $$  $$$$ \____  $$
+    // | $$  \ $$| $$  | $$   | $$      | $$  | $$  | $$| $$\  $$$ /$$  \ $$
+    // | $$$$$$$/|  $$$$$$/   | $$      | $$  |  $$$$$$/| $$ \  $$|  $$$$$$/
+    // |_______/  \______/    |__/      |__/   \______/ |__/  \__/ \______/ 
+
+    // https://github.com/stm32-rs/stm32f3xx-hal/blob/master/examples/gpio_interrupts.rs
+
+    let mut hour_button = gpioa.pa0.into_pull_up_input(&mut gpioa.moder, &mut gpioa.pupdr);
+    syscfg.select_exti_interrupt_source(&hour_button);
+    hour_button.trigger_on_edge(&mut exti, Edge::Rising);
+    hour_button.enable_interrupt(&mut exti);
+
+    let mut minute_button = gpiob.pb3.into_pull_up_input(&mut gpiob.moder, &mut gpiob.pupdr);
+    syscfg.select_exti_interrupt_source(&minute_button);
+    minute_button.trigger_on_edge(&mut exti, Edge::Rising);
+    minute_button.enable_interrupt(&mut exti);
+
 
     //  /$$$$$$  /$$$$$$   /$$$$$$
     // |_  $$_/ /$$__  $$ /$$__  $$
@@ -64,7 +89,8 @@ pub fn init(
     sda.internal_pull_up(&mut gpiob.pupdr, true);
 
     let i2c = I2c::new(dp.I2C1, (scl, sda), 100_000.Hz(), clocks, &mut rcc.apb1);
-    let rtc = Ds323x::new_ds3231(i2c);
+    let clock = Ds323x::new_ds3231(i2c);
+
 
     //   /$$$$$$  /$$$$$$$  /$$$$$$
     //  /$$__  $$| $$__  $$|_  $$_/
@@ -100,13 +126,13 @@ pub fn init(
     display.power_on().unwrap();
     for a in 0..displays {
         display.clear_display(a).unwrap();
-        display.set_intensity(a, 8).unwrap();
+        display.set_intensity(a, 5).unwrap();
     }
 
-    Clock {
-        display: display,
-        clock: rtc,
-        delay: delay,
-        mode: mode,
-    }
+    (Clock {
+        display,
+        clock,
+        delay,
+        mode,
+    }, hour_button, minute_button)
 }

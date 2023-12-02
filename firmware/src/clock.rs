@@ -1,7 +1,8 @@
 extern crate alloc;
 use alloc::boxed::Box;
 use cortex_m::prelude::_embedded_hal_blocking_delay_DelayMs;
-use ds323x::{ic::DS3231, interface::I2cInterface, DateTimeAccess, Ds323x, Timelike};
+use ds323x::{ic::DS3231, interface::I2cInterface, DateTimeAccess, Ds323x, Timelike, Rtcc};
+use ds323x::Hours::H24;
 use hal::{
     gpio::{Alternate, Gpiob, OpenDrain, Output, Pin, PushPull, U},
     i2c::I2c,
@@ -39,7 +40,7 @@ pub struct Clock {
         DS3231,
     >,
     pub(crate) delay: Delay,
-    pub(crate) mode: Box<dyn TimeMode>,
+    pub(crate) mode: Box<dyn TimeMode + Send>,
 }
 
 impl Clock {
@@ -62,12 +63,24 @@ impl Clock {
         }
     }
 
+    pub fn get_time(&mut self) -> (u32, u32, u32){
+        return self.time();
+    }
+
     pub fn wait(&mut self, ms: u16) {
         self.delay.delay_ms(ms);
     }
 
-    pub fn add_minutes(&mut self) {
-        // self.clock.set_minutes(minutes)
+    pub fn add_minutes(&mut self, amount: u8) {
+        let (_, minutes, _) = self.time();
+        let to_set = (minutes + u32::from(amount)) % 60;
+        self.clock.set_minutes(to_set as u8).unwrap();
+    }
+
+    pub fn add_hours(&mut self, amount: u8) {
+        let (hours, _, _) = self.time();
+        let to_set = (hours + u32::from(amount)) % 24;
+        self.clock.set_hours(H24(to_set as u8)).unwrap();
     }
 
     fn time(&mut self) -> (u32, u32, u32) {
