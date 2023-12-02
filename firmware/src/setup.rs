@@ -7,7 +7,7 @@ static ALLOCATOR: CortexMHeap = CortexMHeap::empty();
 
 use alloc::boxed::Box;
 use ds323x::Ds323x;
-use hal::{delay::Delay, i2c::I2c, prelude::*, spi::Spi, pac::{Interrupt}, gpio::{Gpioa, Input, U, Pin}};
+use hal::{delay::Delay, i2c::I2c, prelude::*, spi::Spi, pac::{Interrupt}, gpio::{Gpioa, Input, U, Pin, Edge}};
 use max7219::MAX7219;
 
 pub use cortex_m::{asm::bkpt, iprint, iprintln, peripheral::ITM};
@@ -27,6 +27,8 @@ pub fn init(
 
     let mut flash = dp.FLASH.constrain();
     let mut rcc = dp.RCC.constrain();
+    let mut syscfg = dp.SYSCFG.constrain(&mut rcc.apb2);
+    let mut exti = dp.EXTI;
 
     let mut gpioa = dp.GPIOA.split(&mut rcc.ahb);
     let mut gpiob = dp.GPIOB.split(&mut rcc.ahb);
@@ -50,7 +52,12 @@ pub fn init(
     // | $$$$$$$/|  $$$$$$/   | $$      | $$  |  $$$$$$/| $$ \  $$|  $$$$$$/
     // |_______/  \______/    |__/      |__/   \______/ |__/  \__/ \______/ 
 
+    // https://github.com/stm32-rs/stm32f3xx-hal/blob/master/examples/gpio_interrupts.rs
+
     let mut button = gpioa.pa0.into_pull_up_input(&mut gpioa.moder, &mut gpioa.pupdr);
+    syscfg.select_exti_interrupt_source(&button);
+    button.trigger_on_edge(&mut exti, Edge::Rising);
+    button.enable_interrupt(&mut exti);
 
 
     //  /$$$$$$  /$$$$$$   /$$$$$$
@@ -79,7 +86,8 @@ pub fn init(
     sda.internal_pull_up(&mut gpiob.pupdr, true);
 
     let i2c = I2c::new(dp.I2C1, (scl, sda), 100_000.Hz(), clocks, &mut rcc.apb1);
-    let rtc = Ds323x::new_ds3231(i2c);
+    let clock = Ds323x::new_ds3231(i2c);
+
 
     //   /$$$$$$  /$$$$$$$  /$$$$$$
     //  /$$__  $$| $$__  $$|_  $$_/
@@ -118,11 +126,10 @@ pub fn init(
         display.set_intensity(a, 5).unwrap();
     }
 
-
     (Clock {
-        display: display,
-        clock: rtc,
-        delay: delay,
-        mode: mode,
+        display,
+        clock,
+        delay,
+        mode,
     }, button)
 }

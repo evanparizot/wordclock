@@ -2,7 +2,6 @@
 #![no_main]
 #![no_std]
 
-use panic_semihosting as _;
 extern crate alloc;
 
 mod clock;
@@ -30,12 +29,11 @@ mod app {
 
     #[init]
     fn init(ctx: init::Context) -> (Shared, Local, init::Monotonics) {
-        let dp = ctx.device;
-        let cp = ctx.core;
-
         hprintln!("Initializing!");
-        let (clock, button) = 
-            crate::setup::init(cp, dp, Box::new(AdrianMorgan {}));
+        let (
+            clock, 
+            button
+        ) = crate::setup::init(ctx.core, ctx.device, Box::new(AdrianMorgan {}));
 
         (Shared { clock }, Local { button }, init::Monotonics())
     }
@@ -54,6 +52,5 @@ mod app {
     #[task(binds = EXTI0, local = [button], shared = [clock])]
     fn update_time(ctx: update_time::Context) {
         ctx.local.button.clear_interrupt();
-
     }
 }
