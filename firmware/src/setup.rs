@@ -7,12 +7,8 @@ static ALLOCATOR: CortexMHeap = CortexMHeap::empty();
 
 use alloc::boxed::Box;
 use ds323x::Ds323x;
-use hal::{delay::Delay, i2c::I2c, prelude::*, spi::Spi, pac::{Interrupt}, gpio::{Gpioa, Input, U, Pin, Edge}};
+use hal::{delay::Delay, i2c::I2c, prelude::*, spi::Spi, gpio::{Gpioa, Input, U, Pin, Edge}};
 use max7219::MAX7219;
-
-pub use cortex_m::{asm::bkpt, iprint, iprintln, peripheral::ITM};
-pub use cortex_m_rt::entry;
-
 use crate::{clock::Clock, times::TimeMode};
 
 
@@ -22,7 +18,8 @@ pub fn init(
     mode: Box<dyn TimeMode + Send>,
 ) -> (
     Clock, 
-    Pin<Gpioa, U<0>, Input>
+    Pin<Gpioa, U<0>, Input>,
+    Pin<Gpioa, U<2>, Input>,
 ) {
 
     let mut flash = dp.FLASH.constrain();
@@ -54,10 +51,15 @@ pub fn init(
 
     // https://github.com/stm32-rs/stm32f3xx-hal/blob/master/examples/gpio_interrupts.rs
 
-    let mut button = gpioa.pa0.into_pull_up_input(&mut gpioa.moder, &mut gpioa.pupdr);
-    syscfg.select_exti_interrupt_source(&button);
-    button.trigger_on_edge(&mut exti, Edge::Rising);
-    button.enable_interrupt(&mut exti);
+    let mut hour_button = gpioa.pa0.into_pull_up_input(&mut gpioa.moder, &mut gpioa.pupdr);
+    syscfg.select_exti_interrupt_source(&hour_button);
+    hour_button.trigger_on_edge(&mut exti, Edge::Rising);
+    hour_button.enable_interrupt(&mut exti);
+
+    let mut minute_button = gpioa.pa2.into_pull_up_input(&mut gpioa.moder, &mut gpioa.pupdr);
+    syscfg.select_exti_interrupt_source(&minute_button);
+    minute_button.trigger_on_edge(&mut exti, Edge::Rising);
+    minute_button.enable_interrupt(&mut exti);
 
 
     //  /$$$$$$  /$$$$$$   /$$$$$$
@@ -131,5 +133,5 @@ pub fn init(
         clock,
         delay,
         mode,
-    }, button)
+    }, hour_button, minute_button)
 }

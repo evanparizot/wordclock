@@ -2,6 +2,8 @@
 #![no_main]
 #![no_std]
 
+// This needs to exist otherwise an error will be thrown
+use panic_semihosting as _;
 extern crate alloc;
 
 mod clock;
@@ -12,7 +14,7 @@ mod times;
 #[rtic::app(device = hal::pac, peripherals = true)]
 mod app {
     use cortex_m_semihosting::hprintln;
-    use hal::gpio::{PA0, Input};
+    use hal::gpio::{PA0, PA2, Input};
     use alloc::boxed::Box;
 
     use crate::{clock::Clock, config::am::AdrianMorgan};
@@ -24,7 +26,8 @@ mod app {
 
     #[local]
     struct Local {
-        button: PA0<Input> 
+        hour_button: PA0<Input>,
+        minute_button: PA2<Input>
     }
 
     #[init]
@@ -32,10 +35,11 @@ mod app {
         hprintln!("Initializing!");
         let (
             clock, 
-            button
+            hour_button,
+            minute_button
         ) = crate::setup::init(ctx.core, ctx.device, Box::new(AdrianMorgan {}));
 
-        (Shared { clock }, Local { button }, init::Monotonics())
+        (Shared { clock }, Local { hour_button, minute_button}, init::Monotonics())
     }
 
     #[idle(shared = [clock])]
@@ -45,12 +49,31 @@ mod app {
         loop {
             clock.lock(|clock| {
                 clock.update_display_time();
+                let (h, m, s) = clock.get_time();
+                hprintln!("{:?}, {:?}, {:?}", h, m, s);
             });
         }
     }
 
-    #[task(binds = EXTI0, local = [button], shared = [clock])]
-    fn update_time(ctx: update_time::Context) {
-        ctx.local.button.clear_interrupt();
+    #[task(binds = EXTI0, local = [hour_button], shared = [clock])]
+    fn update_hour(ctx: update_hour::Context) {
+        ctx.local.hour_button.clear_interrupt();
+
+        let mut clock = ctx.shared.clock;
+        clock.lock(|clock| {
+            hprintln!("Add hours(s)");
+            clock.add_hours(1);
+        });
+    }
+
+    #[task(binds = EXTI0, local = [minute_button], shared = [clock])]
+    fn update_minutes(ctx: update_minute::Context) {
+        ctx.local.minute_button.clear_interrupt();
+
+        let mut clock = ctx.shared.clock;
+        clock.lock(|clock| {
+            hprintln!("Add hours(s)");
+            clock.add_minutes(1);
+        });
     }
 }
