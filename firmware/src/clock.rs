@@ -39,7 +39,7 @@ pub struct Clock {
         >,
         DS3231,
     >,
-    pub(crate) delay: Delay,
+    // pub(crate) delay: Delay,
     pub(crate) mode: Box<dyn TimeMode + Send>,
 }
 
@@ -64,12 +64,12 @@ impl Clock {
     }
 
     pub fn get_time(&mut self) -> (u32, u32, u32){
-        return self.time();
+        self.time()
     }
 
-    pub fn wait(&mut self, ms: u16) {
-        self.delay.delay_ms(ms);
-    }
+    // pub fn wait(&mut self, ms: u16) {
+    //     self.delay.delay_ms(ms);
+    // }
 
     pub fn add_minutes(&mut self, amount: u8) {
         let (_, minutes, _) = self.time();

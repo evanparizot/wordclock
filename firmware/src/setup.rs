@@ -10,8 +10,7 @@ use ds323x::Ds323x;
 use hal::{delay::Delay, i2c::I2c, prelude::*, spi::Spi, gpio::{Gpioa, Input, U, Pin, Edge}};
 use hal::gpio::Gpiob;
 use max7219::MAX7219;
-use crate::{clock::Clock, times::TimeMode};
-
+use crate::{clock::Clock, times::TimeMode, Mono, Monotonic};
 
 pub fn init(
     cp: cortex_m::Peripherals,
@@ -22,7 +21,8 @@ pub fn init(
     Pin<Gpioa, U<0>, Input>,
     Pin<Gpiob, U<3>, Input>,
 ) {
-
+    Mono::start(cp.SYST, 64_000_000);
+    
     let mut flash = dp.FLASH.constrain();
     let mut rcc = dp.RCC.constrain();
     let mut syscfg = dp.SYSCFG.constrain(&mut rcc.apb2);
@@ -37,8 +37,6 @@ pub fn init(
         .pclk1(32.MHz())
         .pclk2(32.MHz())
         .freeze(&mut flash.acr);
-
-    let delay = Delay::new(cp.SYST, clocks);
 
 
     //  /$$$$$$$  /$$   /$$ /$$$$$$$$ /$$$$$$$$ /$$$$$$  /$$   /$$  /$$$$$$ 
@@ -132,7 +130,7 @@ pub fn init(
     (Clock {
         display,
         clock,
-        delay,
+        // delay,
         mode,
     }, hour_button, minute_button)
 }
