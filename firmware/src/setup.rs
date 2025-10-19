@@ -149,6 +149,7 @@ pub fn init(
             clock,
             // delay,
             mode,
+            last_frame: [[0; 8]; 4]
         },
         hour_button,
         minute_button,

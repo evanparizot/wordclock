@@ -39,15 +39,18 @@ pub struct Clock {
         >,
         DS3231,
     >,
-    // pub(crate) delay: Delay,
     pub(crate) mode: Box<dyn TimeMode + Send>,
+    pub(crate) last_frame: [[u8; 8]; 4],
 }
 
 impl Clock {
     pub fn update_display_time(&mut self) {
         // Get current time, in hours, minutes and seconds
-        let (hour, minutes, _seconds) = self.time();
+        let (hour, minutes, _seconds) = self.get_time();
         let to_write = self.mode.get_time_arrays(hour, minutes);
+
+        self.last_frame = to_write;
+
         self.write_time_arrays(&to_write);
     }
 
@@ -66,10 +69,6 @@ impl Clock {
     pub fn get_time(&mut self) -> (u32, u32, u32){
         self.time()
     }
-
-    // pub fn wait(&mut self, ms: u16) {
-    //     self.delay.delay_ms(ms);
-    // }
 
     pub fn add_minutes(&mut self, amount: u8) {
         let (_, minutes, _) = self.time();
@@ -90,5 +89,19 @@ impl Clock {
         let seconds = datetime.time().second();
 
         (hour, minute, seconds)
+    }
+
+    pub fn set_heartbeat(&mut self, on: bool) {
+        const MODULE: usize = 3;
+        const ROW: usize = 7;
+        const COL: u8 = 7;
+
+        let bit: u8 = 1 << COL;
+
+        let mut module_rows = self.last_frame[MODULE];
+        let base = module_rows[ROW];
+        module_rows[ROW] = if on { base | bit } else { base & !bit };
+
+        self.display.write_raw(MODULE, &module_rows).unwrap();
     }
 }

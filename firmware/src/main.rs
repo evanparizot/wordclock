@@ -105,9 +105,10 @@ mod app {
                     c.update_display_time();
                 });
             } else {
-                ctx.shared.blink.lock(|b| {
-                    *b = !*b;
+                let on = ctx.shared.blink.lock(|b| {
+                    *b = !*b; *b
                 });
+                ctx.shared.clock.lock(|c| c.set_heartbeat(on));
             }
 
             // (4) Re-arm next tick
