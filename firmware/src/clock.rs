@@ -39,15 +39,18 @@ pub struct Clock {
         >,
         DS3231,
     >,
-    pub(crate) delay: Delay,
     pub(crate) mode: Box<dyn TimeMode + Send>,
+    pub(crate) last_frame: [[u8; 8]; 4],
 }
 
 impl Clock {
     pub fn update_display_time(&mut self) {
         // Get current time, in hours, minutes and seconds
-        let (hour, minutes, _seconds) = self.time();
+        let (hour, minutes, _seconds) = self.get_time();
         let to_write = self.mode.get_time_arrays(hour, minutes);
+
+        self.last_frame = to_write;
+
         self.write_time_arrays(&to_write);
     }
 
@@ -64,11 +67,7 @@ impl Clock {
     }
 
     pub fn get_time(&mut self) -> (u32, u32, u32){
-        return self.time();
-    }
-
-    pub fn wait(&mut self, ms: u16) {
-        self.delay.delay_ms(ms);
+        self.time()
     }
 
     pub fn add_minutes(&mut self, amount: u8) {
@@ -90,5 +89,38 @@ impl Clock {
         let seconds = datetime.time().second();
 
         (hour, minute, seconds)
+    }
+
+    pub fn set_heartbeat(&mut self, on: bool) {
+        const MODULE: usize = 3;
+        const ROW: usize = 7;
+        const COL: u8 = 7;
+
+        let bit: u8 = 1 << COL;
+
+        let mut module_rows = self.last_frame[MODULE];
+        let base = module_rows[ROW];
+        module_rows[ROW] = if on { base | bit } else { base & !bit };
+
+        self.display.write_raw(MODULE, &module_rows).unwrap();
+    }
+
+    pub fn apply_time_based_brightness (
+        &mut self, night_start: u8, night_end: u8, day: u8, night: u8,
+    ) -> u8 {
+        let (h, _m, _s) = self.get_time();
+        let h = h as u8;
+
+        let in_night = if night_start <= night_end {
+            h >= night_start && h < night_end
+        } else {
+            h >= night_start || h < night_end
+        };
+
+        let level = if in_night { night } else { day };
+
+        let module_count = self.last_frame.len();
+        self.set_intensity(module_count, level);
+        level
     }
 }
