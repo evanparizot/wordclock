@@ -104,4 +104,23 @@ impl Clock {
 
         self.display.write_raw(MODULE, &module_rows).unwrap();
     }
+
+    pub fn apply_time_based_brightness (
+        &mut self, night_start: u8, night_end: u8, day: u8, night: u8,
+    ) -> u8 {
+        let (h, _m, _s) = self.get_time();
+        let h = h as u8;
+
+        let in_night = if night_start <= night_end {
+            h >= night_start && h < night_end
+        } else {
+            h >= night_start || h < night_end
+        };
+
+        let level = if in_night { night } else { day };
+
+        let module_count = self.last_frame.len();
+        self.set_intensity(module_count, level);
+        level
+    }
 }

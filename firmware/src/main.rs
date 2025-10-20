@@ -16,7 +16,7 @@ systick_monotonic!(Mono, 1000);
 
 #[rtic::app(device = hal::pac, peripherals = true, dispatchers = [EXTI1])]
 mod app {
-    use crate::{clock::Clock, config::am::AdrianMorgan, Mono};
+    use crate::{clock::Clock, config::{am::AdrianMorgan, DAY_INTENSITY, NIGHT_END_HOUR, NIGHT_INTENSITY, NIGHT_START_HOUR}, Mono};
     // use alloc::boxed::Box;
     // use cortex_m::peripheral::SYST;
     use cortex_m_semihosting::hprintln;
@@ -36,6 +36,7 @@ mod app {
         last_minute_press: Option<<Mono as rtic_monotonics::Monotonic>::Instant>,
         last_rendered_minute: Option<u32>,
         blink: bool,
+        last_brightness: Option<u8>,
     }
 
     #[local]
@@ -64,6 +65,7 @@ mod app {
                 last_minute_press: None,
                 last_rendered_minute: None,
                 blink: false,
+                last_brightness: None
             },
             Local {
                 hour_button,
@@ -81,9 +83,28 @@ mod app {
         }
     }
 
-    #[task(priority = 1, shared = [clock, last_rendered_minute, blink])]
+    #[task(priority = 1, shared = [clock, last_rendered_minute, blink, last_brightness])]
     async fn render_tick(mut ctx: render_tick::Context) {
         loop {
+
+            // -------------------------------------------------------------
+            // Brightness Checks
+
+            let applied = ctx.shared.clock.lock(|c| {
+                c.apply_time_based_brightness(NIGHT_START_HOUR, NIGHT_END_HOUR, DAY_INTENSITY, NIGHT_INTENSITY)
+            });
+
+            let mut changed = false;
+            ctx.shared.last_brightness.lock(|lb| {
+                if lb.map(|old| old != applied).unwrap_or(true) {
+                    *lb = Some(applied);
+                    changed = true;
+                }
+            });
+
+            // -------------------------------------------------------------
+            // Render Checks
+
             // (1) Check current minute
             let minute_now = ctx.shared.clock.lock(|c| {
                 let (_h, m, _s) = c.get_time();
