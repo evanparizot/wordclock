@@ -35,7 +35,6 @@ pub fn init(
     dp: hal::pac::Peripherals,
     mode: Box<dyn TimeMode + Send>,
 ) -> (Clock, Pin<Gpioa, U<0>, Input>, Pin<Gpiob, U<3>, Input>) {
-
     Mono::start(cp.SYST, 64_000_000);
 
     let mut flash = dp.FLASH.constrain();
@@ -68,15 +67,41 @@ pub fn init(
         .pa0
         .into_pull_up_input(&mut gpioa.moder, &mut gpioa.pupdr);
     syscfg.select_exti_interrupt_source(&hour_button);
-    hour_button.trigger_on_edge(&mut exti, Edge::Rising);
+    hour_button.trigger_on_edge(&mut exti, Edge::Falling);
     hour_button.enable_interrupt(&mut exti);
 
     let mut minute_button = gpiob
         .pb3
         .into_pull_up_input(&mut gpiob.moder, &mut gpiob.pupdr);
     syscfg.select_exti_interrupt_source(&minute_button);
-    minute_button.trigger_on_edge(&mut exti, Edge::Rising);
+    minute_button.trigger_on_edge(&mut exti, Edge::Falling);
     minute_button.enable_interrupt(&mut exti);
+
+    //  /$$       /$$$$$$$$ /$$$$$$$   /$$$$$$
+    // | $$      | $$_____/| $$__  $$ /$$__  $$
+    // | $$      | $$      | $$  \ $$| $$  \__/
+    // | $$      | $$$$$   | $$  | $$|  $$$$$$
+    // | $$      | $$__/   | $$  | $$ \____  $$
+    // | $$      | $$      | $$  | $$ /$$  \ $$
+    // | $$$$$$$$| $$$$$$$$| $$$$$$$/|  $$$$$$/
+    // |________/|________/|_______/  \______/
+
+    let mut pa1 = gpioa
+        .pa1
+        .into_push_pull_output(&mut gpioa.moder, &mut gpioa.otyper);
+    let mut pa2 = gpioa
+        .pa2
+        .into_push_pull_output(&mut gpioa.moder, &mut gpioa.otyper);
+    let mut pa3 = gpioa
+        .pa3
+        .into_push_pull_output(&mut gpioa.moder, &mut gpioa.otyper);
+    let mut pa4 = gpioa
+        .pa4
+        .into_push_pull_output(&mut gpioa.moder, &mut gpioa.otyper);
+    let _ = pa1.set_low();
+    let _ = pa2.set_low();
+    let _ = pa3.set_low();
+    let _ = pa4.set_low();
 
     //  /$$$$$$  /$$$$$$   /$$$$$$
     // |_  $$_/ /$$__  $$ /$$__  $$
@@ -149,7 +174,7 @@ pub fn init(
             clock,
             // delay,
             mode,
-            last_frame: [[0; 8]; 4]
+            last_frame: [[0; 8]; 4],
         },
         hour_button,
         minute_button,
