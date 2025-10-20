@@ -20,6 +20,11 @@ name = "wordclock"
 test = false
 bench = false
 
+[features]
+default = ["mode-default"]
+mode-default = []
+mode-am = []
+
 [dependencies]
 volatile = "0.4.3"
 alloc-cortex-m = "0.4.4"

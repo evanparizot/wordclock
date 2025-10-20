@@ -5,6 +5,7 @@
 use panic_semihosting as _;
 extern crate alloc;
 
+mod modes;
 mod clock;
 mod config;
 mod setup;
@@ -14,9 +15,31 @@ use rtic_monotonics::systick::prelude::*;
 
 systick_monotonic!(Mono, 1000);
 
+use modes::{REGISTRY, make_by_name};
+use alloc::boxed::Box;
+use crate::times::TimeMode;
+
+#[cfg(not(any(
+    feature = "mode-default",
+    feature = "mode-am"
+)))]
+compile_error!("Enable at least one `mode-*` feature.");
+
+const BUILD_MODE: Option<&'static str> = option_env!("WORDCLOCK_MODE");
+
+fn make_mode() -> Box<dyn TimeMode + Send> {
+    if let Some(sel) = BUILD_MODE {
+        if let Some(m) = make_by_name(sel) {
+            return m;
+        }
+    }
+
+    (REGISTRY[0].make)()
+}
+
 #[rtic::app(device = hal::pac, peripherals = true, dispatchers = [EXTI1])]
 mod app {
-    use crate::{clock::Clock, config::{am::AdrianMorgan, DAY_INTENSITY, NIGHT_END_HOUR, NIGHT_INTENSITY, NIGHT_START_HOUR}, Mono};
+    use crate::{clock::Clock, config::{DAY_INTENSITY, NIGHT_END_HOUR, NIGHT_INTENSITY, NIGHT_START_HOUR}, Mono};
     // use alloc::boxed::Box;
     // use cortex_m::peripheral::SYST;
     use cortex_m_semihosting::hprintln;
@@ -50,8 +73,8 @@ mod app {
         hprintln!("Initializing!");
 
         crate::setup::init_allocator();
-        let mode = alloc::boxed::Box::new(AdrianMorgan {});
 
+        let mode = crate::make_mode();
 
         let (clock, hour_button, minute_button) =
             crate::setup::init(ctx.core, ctx.device, mode);

@@ -16,6 +16,10 @@ rustup target add thumbv7em-none-eabihf
 ## Compiling
 ```
 cargo build
+
+cargo build --release
+
+cargo build --release --features "mode-default"
 ```
 
 ## Start OpenOCD
